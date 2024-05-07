@@ -402,6 +402,40 @@ namespace DVLD_DataAccess
             return rowsAffected > 0;
 
         }
+        public static bool isPersonExist(string NationalNo)
+        {
+            bool isFound = false;
+
+            SqlConnection connection = new SqlConnection(SettingsDataAccess.connectionString);
+
+            string query = @"select Found = 1 from People where NationalNo = @nationalNo";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@nationalNo", NationalNo);
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                isFound = reader.HasRows;
+
+                reader.Close();
+            }
+            catch(Exception e)
+            {
+                return false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isFound;
+        }
+
+
 
 
         public static bool isPersonExist(int personID)
@@ -413,6 +447,9 @@ namespace DVLD_DataAccess
             string query = @"select Found = 1 from People where PersonID = @personID";
 
             SqlCommand command = new SqlCommand(query, connection);
+
+
+            command.Parameters.AddWithValue("@personID", personID);
 
             try
             {
