@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -165,6 +166,84 @@ namespace DVLD_DataAccess
             return isFound;
         }
 
+
+
+        public static int addNewPerson(string firstName , string secondName ,
+            string thirdName , string lastName , string nationalNo ,
+            DateTime dateOfBirth , short gendor , string address , string phone , string email,
+            int NationalityCountyID , string imagePath)
+        {
+            int personID = -1;
+
+            SqlConnection connection = new SqlConnection(SettingsDataAccess.connectionString);
+
+            string query = @"insert into People values 
+                          VALUES
+           (@NationalNo,
+           @FirstName, 
+           @SecondName,
+           @ThirdName,
+           @LastName, 
+           @DateOfBirth,
+           @Gendor,
+           @Address,
+           @Phone, 
+           @Email,
+           @NationalityCountryID,
+           @ImagePath);
+            SELECT SCOPE_IDENTITY();";
+                                  
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@NationalNo" , nationalNo);
+            command.Parameters.AddWithValue("@FirstName" , firstName);
+            command.Parameters.AddWithValue("@SecondName" , secondName);
+            command.Parameters.AddWithValue("@LastName" , lastName);
+            command.Parameters.AddWithValue("@DateOfBirth" , dateOfBirth);
+            command.Parameters.AddWithValue("@Gendor" , gendor);
+            command.Parameters.AddWithValue("@Addredd" , address);
+            command.Parameters.AddWithValue("@Phone" , phone);
+
+            if(thirdName != "" && thirdName != null)
+            {
+                command.Parameters.AddWithValue("@ThirdName", thirdName);
+            }
+
+            if(imagePath != "" &&  imagePath != null)
+            {
+                command.Parameters.AddWithValue("@ImagePaht", imagePath);
+            }
+
+             if(email != "" &&  email != null)
+            {
+                command.Parameters.AddWithValue("@Email", email);
+            }
+
+
+            try
+            {
+                connection.Open();
+
+                object result = command.ExecuteScalar();
+
+                if (result != null && int.TryParse(result.ToString(), out int insertedID))
+                {
+                    personID = insertedID;
+                }
+
+            }catch(Exception e)
+            {
+                // log it
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return personID;
+
+        }
 
 
 
