@@ -246,6 +246,78 @@ namespace DVLD_DataAccess
         }
 
 
+        public static bool updatePerson(int personID ,string firstName , string secondName ,
+            string thirdName , string lastName , string nationalNo ,
+            DateTime dateOfBirth , short gendor , string address , string phone , string email,
+            int NationalityCountyID , string imagePath)
+        {
+
+            int rowsAffected = 0;
+
+            SqlConnection connection = new SqlConnection(SettingsDataAccess.connectionString);
+
+            string query = @"update People
+                            set FirstName = @FirstName,
+                                SecondName = @SecondName,
+                                ThirdName = @ThirdName,
+                                LastName = @LastName, 
+                                NationalNo = @NationalNo,
+                                DateOfBirth = @DateOfBirth,
+                                Gendor=@Gendor,
+                                Address = @Address,  
+                                Phone = @Phone,
+                                Email = @Email, 
+                                NationalityCountryID = @NationalityCountryID,
+                                ImagePath =@ImagePath
+                                where PersonID = @PersonID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@FirstName" , firstName);
+            command.Parameters.AddWithValue("@SecondName" , secondName);
+            command.Parameters.AddWithValue("@LastName" , lastName);
+            command.Parameters.AddWithValue("@Address" , address);
+            command.Parameters.AddWithValue("@Phone" , phone);
+            command.Parameters.AddWithValue("@NationalNo" , nationalNo);
+            command.Parameters.AddWithValue("@DateOfBirth" , dateOfBirth);
+            command.Parameters.AddWithValue("@Gendor" , gendor);
+            command.Parameters.AddWithValue("@NationalityCountryID" , NationalityCountyID);
+
+            if(thirdName != "" && thirdName != null)
+            {
+                command.Parameters.AddWithValue("ThirdName", thirdName);
+            }
+
+            if(email != "" &&  email != null)
+            {
+                command.Parameters.AddWithValue("Email",email);
+            }
+
+            if(imagePath != "" &&  imagePath != null)
+            {
+                command.Parameters.AddWithValue("ImagePath", imagePath);
+            }
+
+
+            try
+            {
+                connection.Open();
+
+                rowsAffected = command.ExecuteNonQuery();
+
+            }catch(Exception ex)
+            {
+                return false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+
+            return rowsAffected > 0;
+        }
+
 
 
 
