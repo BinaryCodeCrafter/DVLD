@@ -370,6 +370,39 @@ namespace DVLD_DataAccess
         }
 
 
+        public static bool deletePerson(int personID)
+        {
+            int rowsAffected = 0;
+
+            SqlConnection connection = new SqlConnection(SettingsDataAccess.connectionString);
+
+            string query = @"delete People where PersonID = @personID";
+
+            SqlCommand command = new SqlCommand(query , connection);
+
+            command.Parameters.AddWithValue("personID" , personID);
+
+            try
+            {
+                connection.Open();
+
+                rowsAffected = command.ExecuteNonQuery();
+
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+
+            return rowsAffected > 0;
+
+        }
+
 
 
 
