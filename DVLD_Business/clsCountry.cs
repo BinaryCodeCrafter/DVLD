@@ -27,7 +27,7 @@ namespace DVLD_Business
             this.countryName = name;
         }
 
-        public clsCountry find(int id)
+        public static clsCountry find(int id)
         {
             string name = "";
 
@@ -42,7 +42,7 @@ namespace DVLD_Business
 
         }
 
-        public clsCountry find(string name)
+        public static clsCountry find(string name)
         {
             int id = -1;
 
