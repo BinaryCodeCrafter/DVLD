@@ -309,6 +309,7 @@ namespace DVLD_DataAccess
 
             }catch(Exception ex)
             {
+                connection.Close();
                 return false;
             }
             finally
@@ -391,6 +392,7 @@ namespace DVLD_DataAccess
             }
             catch
             {
+                connection.Close();
                 return false;
             }
             finally
@@ -425,6 +427,7 @@ namespace DVLD_DataAccess
             }
             catch(Exception e)
             {
+                connection.Close();
                 return false;
             }
             finally
@@ -463,6 +466,7 @@ namespace DVLD_DataAccess
             }
             catch(Exception e)
             {
+                connection.Close();
                 return false;
             }
             finally

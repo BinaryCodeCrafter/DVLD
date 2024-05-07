@@ -46,5 +46,83 @@ namespace DVLD_DataAccess
 
             return data;
         }
+
+
+        public static bool findCountryByID(int id ,ref string countryName)
+        {
+            bool isFound = false;
+
+            SqlConnection connection = new SqlConnection(SettingsDataAccess.connectionString);
+
+            string query = @"select * from Countries where CountryID = @countryID";
+
+            SqlCommand command = new SqlCommand (query , connection);
+
+            command.Parameters.AddWithValue("@countryID" , id);
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    isFound = true;
+
+                    countryName = (string)reader["CountryName"];
+                }
+
+
+            }
+            catch(Exception e)
+            {
+                isFound = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isFound;
+        }
+
+
+        public static bool findCountryByName(string name , ref int id)
+        {
+            bool isFound = false;
+
+            SqlConnection connection = new SqlConnection(SettingsDataAccess.connectionString);
+
+            string query = @"select * from Countries where CountryName = @name";
+
+            SqlCommand command = new SqlCommand(query , connection);
+
+            command.Parameters.AddWithValue("@name" , name);
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    isFound = true;
+                    id = (int)reader["CountryID"];
+                }
+
+                reader.Close();
+            }catch(Exception e)
+            {
+                isFound = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isFound;
+        }
     }
 }
