@@ -404,6 +404,39 @@ namespace DVLD_DataAccess
         }
 
 
+        public static bool isPersonExist(int personID)
+        {
+            bool isFound = false;
+
+            SqlConnection connection = new SqlConnection(SettingsDataAccess.connectionString);
+
+            string query = @"select Found = 1 from People where PersonID = @personID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                isFound = reader.HasRows;
+
+                reader.Close();
+            }
+            catch(Exception e)
+            {
+                return false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isFound;
+        }
+
+
 
 
 
