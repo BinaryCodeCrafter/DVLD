@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Security.AccessControl;
 using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
@@ -317,6 +319,57 @@ namespace DVLD_DataAccess
 
             return rowsAffected > 0;
         }
+
+
+        public static DataTable getAllPeople()
+        {
+            DataTable data = new DataTable();
+
+            SqlConnection connection = new SqlConnection(SettingsDataAccess.connectionString);
+
+            string query = @"SELECT People.PersonID, People.NationalNo,
+              People.FirstName, People.SecondName, People.ThirdName, People.LastName,
+			  People.DateOfBirth, People.Gendor,  
+				  CASE
+                  WHEN People.Gendor = 0 THEN 'Male'
+
+                  ELSE 'Female'
+
+                  END as GendorCaption ,
+			  People.Address, People.Phone, People.Email, 
+              People.NationalityCountryID, Countries.CountryName, People.ImagePath
+              FROM            People INNER JOIN
+                         Countries ON People.NationalityCountryID = Countries.CountryID
+                ORDER BY People.FirstName";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    data.Load(reader);
+                }
+
+                reader.Close();
+            }
+            catch(Exception e)
+            {
+                // log it
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return data;
+        }
+
+
 
 
 
