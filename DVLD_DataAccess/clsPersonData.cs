@@ -139,7 +139,7 @@ namespace DVLD_DataAccess
                 gendor = (byte)reader["Gendor"];
                 nationalityCountryID = (int)reader["NationalityCountryID"];
                 dateOfBirth = (DateTime)reader["DateOfBirth"];
-                personID = (int)reader["PersonID"]
+                personID = (int)reader["PersonID"];
 
                 if (reader["Email"] != DBNull.Value)
                 {
