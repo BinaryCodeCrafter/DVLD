@@ -110,7 +110,7 @@ namespace DVLD.People
                 }
                 else
                 {
-                    MessageBox.Show("Could not find this image: = " + imagePath, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                  //  MessageBox.Show("Could not find this image: = " + imagePath, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
 
