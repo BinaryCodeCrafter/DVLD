@@ -172,5 +172,14 @@ namespace DVLD.People
             txtRecods.Text = dataGridView1.Rows.Count.ToString();
 
         }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            int id = (int)dataGridView1.CurrentRow.Cells[0].Value;
+
+            frmShowPersonInfo form = new frmShowPersonInfo(id);
+
+            form.ShowDialog();
+        }
     }
 }

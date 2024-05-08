@@ -1,9 +1,12 @@
-﻿using DVLD_Business;
+﻿using DVLD.Properties;
+using DVLD_Business;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,18 +18,103 @@ namespace DVLD.People
     {
 
 
-        private clsPerson person;
+        public clsPerson person;
 
-        private int personID;
+        public int personID;
 
-        public ctrlPersonCard(int personID)
+
+        public ctrlPersonCard()
         {
             InitializeComponent();
-            this.personID = personID;
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
         {
+
+        }
+
+        public void loadPerosnData(int personID)
+        {
+            person = clsPerson.find(personID);
+
+            if(person == null)
+            {
+
+                resetPersonInfo();
+                MessageBox.Show("No Person with PersonID = " + personID.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            fillPersonInfo();
+        }
+
+        public void loadPerosnData(string nationalNo)
+        {
+            person = clsPerson.find(nationalNo);
+
+            if(person == null)
+            {
+
+                resetPersonInfo();
+                MessageBox.Show("No Person with nationalNo = " + nationalNo, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            fillPersonInfo();
+        }
+
+
+      
+
+        private void resetPersonInfo()
+        {
+            lblName.Text ="";
+            lblEmail.Text = "";
+            lblNationalNo.Text = "";
+            lblPersonID.Text = "";
+            lblPhone.Text = "";
+            lblAddress.Text = "";
+        }
+
+        private void fillPersonInfo()
+        {
+            lblName.Text = person.fullName;
+            lblEmail.Text = person.email;
+            lblNationalNo.Text = person.nationalNo;
+            lblPersonID.Text = person.personID.ToString();
+            lblPhone.Text = person.phone;
+            lblAddress.Text = person.address;
+            lblGendor.Text = person.gendor.ToString();
+            loadPicture();
+
+        }
+
+        private void loadPicture()
+        {
+            if(person.gendor == 0)
+            {
+                pictureBox1.Image = Resources.Female_512;
+            }
+            else
+            {
+                pictureBox1.Image = Resources.Male_512;
+            }
+
+            string imagePath = "";
+            if(person.imagePath != "")
+            {
+
+                if (File.Exists(imagePath))
+                {
+                    pictureBox1.ImageLocation = imagePath;
+                }
+                else
+                {
+                    MessageBox.Show("Could not find this image: = " + imagePath, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+
+            }
 
         }
     }

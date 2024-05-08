@@ -332,7 +332,7 @@ namespace DVLD_DataAccess
               People.FirstName, People.SecondName, People.ThirdName, People.LastName,
 			  People.DateOfBirth, People.Gendor,  
 				  CASE
-                  WHEN People.Gendor = 0 THEN 'Male'
+                  WHEN People.Gendor = 1 THEN 'Male'
 
                   ELSE 'Female'
 

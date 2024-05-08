@@ -196,7 +196,7 @@ namespace DVLD_Business
             string imagePath = "";
             DateTime dateOfBirth = DateTime.Now;
             int nationalityCountyID = -1;
-            short gendor = 0;
+            short gendor = 1;
 
             if (clsPersonData.getPersonById(personID, ref firstName, ref secondNmae,
                 ref thirdName, ref lastName, ref nationalNo, ref dateOfBirth,
