@@ -28,19 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListPeople));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtFilter = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.txtRecods = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -78,23 +86,39 @@
             // 
             this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "None",
+            "Person ID",
+            "National No.",
+            "First Name",
+            "Second Name",
+            "Third Name",
+            "Last Name",
+            "Nationality",
+            "Gendor",
+            "Phone",
+            "Email"});
             this.comboBox1.Location = new System.Drawing.Point(142, 294);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(207, 33);
             this.comboBox1.TabIndex = 3;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // textBox1
+            // txtFilter
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(387, 294);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(250, 30);
-            this.textBox1.TabIndex = 4;
+            this.txtFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFilter.Location = new System.Drawing.Point(387, 294);
+            this.txtFilter.Name = "txtFilter";
+            this.txtFilter.Size = new System.Drawing.Size(250, 30);
+            this.txtFilter.TabIndex = 4;
+            this.txtFilter.Visible = false;
+            this.txtFilter.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // dataGridView1
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.ContextMenuStrip = this.contextMenuStrip1;
             this.dataGridView1.GridColor = System.Drawing.Color.White;
             this.dataGridView1.Location = new System.Drawing.Point(12, 349);
             this.dataGridView1.Name = "dataGridView1";
@@ -147,6 +171,55 @@
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button2.UseVisualStyleBackColor = true;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1,
+            this.toolStripSeparator1,
+            this.toolStripMenuItem2,
+            this.toolStripMenuItem3,
+            this.toolStripMenuItem4});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(227, 190);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem1.Image")));
+            this.toolStripMenuItem1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(226, 38);
+            this.toolStripMenuItem1.Text = "Show Details";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(223, 6);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem2.Image")));
+            this.toolStripMenuItem2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(226, 38);
+            this.toolStripMenuItem2.Text = "Add New Person";
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem3.Image")));
+            this.toolStripMenuItem3.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(226, 38);
+            this.toolStripMenuItem3.Text = "Edit";
+            // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem4.Image")));
+            this.toolStripMenuItem4.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(226, 38);
+            this.toolStripMenuItem4.Text = "Deleta";
+            // 
             // frmListPeople
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -158,7 +231,7 @@
             this.Controls.Add(this.txtRecods);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtFilter);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -168,6 +241,7 @@
             this.Load += new System.EventHandler(this.frmListPeople_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -179,11 +253,17 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtFilter;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label txtRecods;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
     }
 }
