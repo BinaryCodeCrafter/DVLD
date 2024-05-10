@@ -44,7 +44,7 @@ namespace DVLD_Business
             set { _imagePath = value; }
         }
 
-        clsCountry coutnry { get; set; }
+        public clsCountry coutnry { get; set; }
 
 
         public clsPerson()
@@ -70,7 +70,7 @@ namespace DVLD_Business
         private clsPerson(int PersonID, string FirstName, string SecondName, string ThirdName,
             string LastName, string NationalNo, DateTime DateOfBirth, short Gendor,
              string Address, string Phone, string Email,
-            int NationalityCountryID, string ImagePath)
+            int nationanlityCountryID, string ImagePath)
         {
             this.personID = PersonID;
             this.firstName = FirstName;

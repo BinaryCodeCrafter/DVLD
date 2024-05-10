@@ -28,7 +28,7 @@ namespace DVLD_DataAccess
 
                 SqlDataReader reader = command.ExecuteReader();
 
-                if (reader.HasRows)
+                if (reader.Read())
                 {
                     data.Load(reader);
                 }

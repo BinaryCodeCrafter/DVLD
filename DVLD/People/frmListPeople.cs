@@ -181,5 +181,28 @@ namespace DVLD.People
 
             form.ShowDialog();
         }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            frmAddUpdatePerson form = new frmAddUpdatePerson();
+
+            form.ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            frmAddUpdatePerson form = new frmAddUpdatePerson();
+
+            form.ShowDialog();
+        }
+
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            int id = (int)dataGridView1.CurrentRow.Cells[0].Value;
+            frmAddUpdatePerson form = new frmAddUpdatePerson(id);
+
+            form.ShowDialog();
+        }
     }
 }
