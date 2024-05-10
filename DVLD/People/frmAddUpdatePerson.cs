@@ -137,5 +137,32 @@ namespace DVLD.People
                 loadData();
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+
+            _person.firstName = txtFirstName.Text;
+            _person.secondName = txtSecondName.Text;
+            _person.thirdName= txtThirdName.Text;
+            _person.lastName = txtLastName.Text;
+            _person.address = txtAddress.Text;
+            _person.email = txtEmail.Text;
+            _person.phone = txtPhone.Text;
+            _person.nationalNo = txtNationalNo.Text;
+            _person.nationanlityCountryID = countryConboBox.SelectedIndex;
+            _person.dateOfBirth = dateTimePicker1.Value;
+            if (_person.save())
+            {
+                DataBackEventHandler?.Invoke(this, _person.personID);
+                MessageBox.Show("done");
+            }
+            else{
+                MessageBox.Show("some went wrong");
+            }
+
+            this.lblLabel.Text = "Update Person";
+            this.mode = enMode.update;
+        }
     }
 }

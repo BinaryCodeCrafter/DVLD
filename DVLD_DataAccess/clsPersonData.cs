@@ -180,7 +180,6 @@ namespace DVLD_DataAccess
             SqlConnection connection = new SqlConnection(SettingsDataAccess.connectionString);
 
             string query = @"insert into People values 
-                          VALUES
            (@NationalNo,
            @FirstName, 
            @SecondName,
@@ -204,22 +203,35 @@ namespace DVLD_DataAccess
             command.Parameters.AddWithValue("@LastName" , lastName);
             command.Parameters.AddWithValue("@DateOfBirth" , dateOfBirth);
             command.Parameters.AddWithValue("@Gendor" , gendor);
-            command.Parameters.AddWithValue("@Addredd" , address);
+            command.Parameters.AddWithValue("@Address" , address);
             command.Parameters.AddWithValue("@Phone" , phone);
+            command.Parameters.AddWithValue("@NationalityCountryId" , NationalityCountyID);
 
             if(thirdName != "" && thirdName != null)
             {
                 command.Parameters.AddWithValue("@ThirdName", thirdName);
             }
+            else
+            {
+                command.Parameters.AddWithValue("@ThirdName", DBNull.Value);
+            }
 
             if(imagePath != "" &&  imagePath != null)
             {
-                command.Parameters.AddWithValue("@ImagePaht", imagePath);
+                command.Parameters.AddWithValue("@ImagePath", imagePath);
+            }
+            else
+            {
+                command.Parameters.AddWithValue("@ImagePath", DBNull.Value);
             }
 
              if(email != "" &&  email != null)
             {
                 command.Parameters.AddWithValue("@Email", email);
+            }
+             else
+            {
+                command.Parameters.AddWithValue("@Email", DBNull.Value);
             }
 
 
@@ -284,21 +296,35 @@ namespace DVLD_DataAccess
             command.Parameters.AddWithValue("@DateOfBirth" , dateOfBirth);
             command.Parameters.AddWithValue("@Gendor" , gendor);
             command.Parameters.AddWithValue("@NationalityCountryID" , NationalityCountyID);
+            command.Parameters.AddWithValue("@PersonID" , personID);
 
             if(thirdName != "" && thirdName != null)
             {
                 command.Parameters.AddWithValue("ThirdName", thirdName);
+            }
+            else
+            {
+                command.Parameters.AddWithValue("ThirdName", DBNull.Value);
             }
 
             if(email != "" &&  email != null)
             {
                 command.Parameters.AddWithValue("Email",email);
             }
+            else
+            {
+                command.Parameters.AddWithValue("Email",DBNull.Value);
+            }
 
             if(imagePath != "" &&  imagePath != null)
             {
                 command.Parameters.AddWithValue("ImagePath", imagePath);
             }
+            else
+            {
+                command.Parameters.AddWithValue("ImagePath", DBNull.Value);
+            }
+
 
 
             try
