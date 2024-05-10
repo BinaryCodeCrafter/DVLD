@@ -97,7 +97,7 @@ namespace DVLD_Business
 
         public static bool deletePerson(int id)
         {
-            return clsPerson.deletePerson(id);
+            return clsPersonData.deletePerson(id);
         }
 
         public static bool isPersonExist(int id)

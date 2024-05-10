@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Configuration;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -209,6 +210,26 @@ namespace DVLD.People
 
             form.ShowDialog();
             refreshPeople();
+        }
+
+        private void toolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            int id = (int)dataGridView1.CurrentRow.Cells[0].Value;
+
+            if(MessageBox.Show($"Are you sure you want to delete person {id}" , "Confirm Delete" , MessageBoxButtons.OKCancel , MessageBoxIcon.Question) == DialogResult.OK)
+            {
+
+                if (clsPerson.deletePerson(id))
+                {
+                    MessageBox.Show("Person Deleted Successfully" , "Success" , MessageBoxButtons.OK , MessageBoxIcon.Information);
+                    refreshPeople();
+                }
+                else
+                {
+                    MessageBox.Show("Person was not deleted due to the fact that there is data linked to it" , "Error" , MessageBoxButtons.OK , MessageBoxIcon.Error);
+                }
+
+            }
         }
     }
 }
