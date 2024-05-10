@@ -180,6 +180,7 @@ namespace DVLD.People
             frmShowPersonInfo form = new frmShowPersonInfo(id);
 
             form.ShowDialog();
+
         }
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
@@ -187,6 +188,8 @@ namespace DVLD.People
             frmAddUpdatePerson form = new frmAddUpdatePerson();
 
             form.ShowDialog();
+
+            refreshPeople();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -195,6 +198,8 @@ namespace DVLD.People
             frmAddUpdatePerson form = new frmAddUpdatePerson();
 
             form.ShowDialog();
+
+            refreshPeople();
         }
 
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
@@ -203,6 +208,7 @@ namespace DVLD.People
             frmAddUpdatePerson form = new frmAddUpdatePerson(id);
 
             form.ShowDialog();
+            refreshPeople();
         }
     }
 }

@@ -141,6 +141,11 @@ namespace DVLD.People
         private void button2_Click(object sender, EventArgs e)
         {
 
+            if(_person == null)
+            {
+                _person = new clsPerson();
+
+            }
 
             _person.firstName = txtFirstName.Text;
             _person.secondName = txtSecondName.Text;
@@ -163,6 +168,11 @@ namespace DVLD.People
 
             this.lblLabel.Text = "Update Person";
             this.mode = enMode.update;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
