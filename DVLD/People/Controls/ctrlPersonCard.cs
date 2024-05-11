@@ -20,7 +20,7 @@ namespace DVLD.People
 
         public clsPerson person;
 
-        public int personID;
+        public int personID = -1;
 
 
         public ctrlPersonCard()
@@ -78,6 +78,7 @@ namespace DVLD.People
 
         private void fillPersonInfo()
         {
+            personID = person.personID;
             lblName.Text = person.fullName;
             lblEmail.Text = person.email;
             lblNationalNo.Text = person.nationalNo;
@@ -116,6 +117,15 @@ namespace DVLD.People
 
             }
 
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmAddUpdatePerson form = new frmAddUpdatePerson(personID);
+
+            form.ShowDialog();
+
+            loadPerosnData(personID);
         }
     }
 }
