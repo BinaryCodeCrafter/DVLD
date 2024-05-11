@@ -22,7 +22,7 @@ namespace DVLD.People
         public enum enGendor { male = 0 , female = 1};
 
         private enMode mode;
-        private int _personID;
+        private int _personID = -1;
         private clsPerson _person;
 
         public frmAddUpdatePerson(int id)
@@ -50,6 +50,7 @@ namespace DVLD.People
             else
             {
                 lblLabel.Text = "Add New Person";
+                _person = new clsPerson();
             }
 
             if (this.radioButton1.Checked)
@@ -67,6 +68,10 @@ namespace DVLD.People
 
 
             dateTimePicker1.MinDate = DateTime.Now.AddYears(-100);
+
+            countryConboBox.SelectedIndex = countryConboBox.FindString("Canada");
+
+            radioButton1.Checked = true;
 
         }
 
@@ -115,9 +120,9 @@ namespace DVLD.People
                 radioButton2.Checked = true;
             }
 
-            string country = clsCountry.find(_person.coutnry.countryName).countryName;
 
-            countryConboBox.SelectedText = country;
+
+            countryConboBox.SelectedIndex = countryConboBox.FindString(_person.coutnry.countryName);
 
 
         }
@@ -125,7 +130,14 @@ namespace DVLD.People
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (radioButton1.Checked)
+            {
+                pbProfile.Image = Resources.Male_512;
+            }
+            else
+            {
+                pbProfile.Image = Resources.Female_512;
+            }
         }
 
         private void frmAddUpdatePerson_Load(object sender, EventArgs e)
@@ -141,12 +153,6 @@ namespace DVLD.People
         private void button2_Click(object sender, EventArgs e)
         {
 
-            if(_person == null)
-            {
-                _person = new clsPerson();
-
-            }
-
             _person.firstName = txtFirstName.Text;
             _person.secondName = txtSecondName.Text;
             _person.thirdName= txtThirdName.Text;
@@ -155,20 +161,20 @@ namespace DVLD.People
             _person.email = txtEmail.Text;
             _person.phone = txtPhone.Text;
             _person.nationalNo = txtNationalNo.Text;
-            _person.nationanlityCountryID = countryConboBox.SelectedIndex;
+            _person.nationanlityCountryID = clsCountry.find(countryConboBox.Text).countryID;
             _person.dateOfBirth = dateTimePicker1.Value;
             if (_person.save())
             {
                 DataBackEventHandler?.Invoke(this, _person.personID);
+                this.lblLabel.Text = "Update Person";
+                this.mode = enMode.update;
                 MessageBox.Show("done");
             }
             else{
                 MessageBox.Show("some went wrong");
             }
 
-            this.lblLabel.Text = "Update Person";
-            this.mode = enMode.update;
-        }
+       }
 
         private void button1_Click(object sender, EventArgs e)
         {
