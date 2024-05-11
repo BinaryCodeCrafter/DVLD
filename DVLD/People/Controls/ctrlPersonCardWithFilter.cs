@@ -69,7 +69,7 @@ namespace DVLD.People.Controls
                     break;
 
 
-                case "Nationa No":
+                case "National No":
                     ctrlPersonCard1.loadPerosnData(textBox1.Text);
                     break;
 

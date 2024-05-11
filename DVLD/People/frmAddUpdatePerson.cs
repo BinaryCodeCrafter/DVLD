@@ -63,11 +63,8 @@ namespace DVLD.People
             }
 
 
-            dateTimePicker1.MaxDate = DateTime.Now.AddYears(-18);
-            dateTimePicker1.Value = dateTimePicker1.MaxDate;
 
 
-            dateTimePicker1.MinDate = DateTime.Now.AddYears(-100);
 
             countryConboBox.SelectedIndex = countryConboBox.FindString("Canada");
 
@@ -109,15 +106,17 @@ namespace DVLD.People
             txtPhone.Text = _person.phone;
             txtNationalNo.Text = _person.nationalNo;
             txtID.Text = _person.personID.ToString();
-            //dateTimePicker1.Value = _person.dateOfBirth;
+            dateTimePicker1.Value = _person.dateOfBirth;
 
             if(_person.gendor == 1)
             {
                 radioButton1.Checked = true;
+                pbProfile.Image = Resources.Male_512;
             }
             else
             {
                 radioButton2.Checked = true;
+                pbProfile.Image = Resources.Female_512;
             }
 
 
@@ -159,10 +158,20 @@ namespace DVLD.People
             _person.lastName = txtLastName.Text;
             _person.address = txtAddress.Text;
             _person.email = txtEmail.Text;
+            if (radioButton1.Checked)
+            {
+                _person.gendor = 1;
+            }
+            else
+            {
+                _person.gendor = 0;
+            }
             _person.phone = txtPhone.Text;
             _person.nationalNo = txtNationalNo.Text;
             _person.nationanlityCountryID = clsCountry.find(countryConboBox.Text).countryID;
             _person.dateOfBirth = dateTimePicker1.Value;
+
+
             if (_person.save())
             {
                 DataBackEventHandler?.Invoke(this, _person.personID);

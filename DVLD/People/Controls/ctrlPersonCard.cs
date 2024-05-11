@@ -86,6 +86,8 @@ namespace DVLD.People
             lblPhone.Text = person.phone;
             lblAddress.Text = person.address;
             lblGendor.Text = person.gendor.ToString();
+            lblCountry.Text = person.coutnry.countryName;
+            lblDataOfBirth.Text = person.dateOfBirth.ToString();
             loadPicture();
 
         }

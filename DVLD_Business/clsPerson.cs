@@ -78,13 +78,13 @@ namespace DVLD_Business
             this.thirdName = ThirdName;
             this.lastName = LastName;
             this.nationalNo = NationalNo;
-            this.dateOfBirth = dateOfBirth;
-            this.gendor = gendor;
-            this.address = address;
-            this.phone = phone;
-            this.email = email;
+            this.dateOfBirth = DateOfBirth;
+            this.gendor = Gendor;
+            this.address = Address;
+            this.phone = Phone;
+            this.email = Email;
             this.nationanlityCountryID = nationanlityCountryID;
-            this.imagePath = imagePath;
+            this.imagePath = ImagePath;
             this.coutnry = clsCountry.find(this.nationanlityCountryID);
             this.mode = enMode.update;
         }
