@@ -66,7 +66,7 @@ namespace DVLD.People
 
       
 
-        private void resetPersonInfo()
+        public void resetPersonInfo()
         {
             lblName.Text ="";
             lblEmail.Text = "";

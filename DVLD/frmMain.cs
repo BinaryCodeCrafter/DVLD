@@ -1,4 +1,5 @@
 ﻿using DVLD.People;
+using DVLD.Users;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,6 +23,13 @@ namespace DVLD
         {
             frmListPeople peopleList = new frmListPeople();
             peopleList.ShowDialog();
+        }
+
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            frmListUsers form = new frmListUsers();
+
+            form.ShowDialog();
         }
     }
 }
