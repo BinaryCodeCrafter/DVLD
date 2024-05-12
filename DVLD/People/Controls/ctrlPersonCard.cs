@@ -85,7 +85,14 @@ namespace DVLD.People
             lblPersonID.Text = person.personID.ToString();
             lblPhone.Text = person.phone;
             lblAddress.Text = person.address;
-            lblGendor.Text = person.gendor.ToString();
+            if(person.gendor == 1)
+            {
+                lblGendor.Text = "Male";
+            }
+            else
+            {
+                lblGendor.Text = "Female";
+            }
             lblCountry.Text = person.coutnry.countryName;
             lblDataOfBirth.Text = person.dateOfBirth.ToString();
             loadPicture();
