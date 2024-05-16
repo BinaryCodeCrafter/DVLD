@@ -96,6 +96,12 @@
     <Compile Include="Users\ctrlUserInfo.Designer.cs">
       <DependentUpon>ctrlUserInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Users\frmAddUpdataUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\frmAddUpdataUser.Designer.cs">
+      <DependentUpon>frmAddUpdataUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Users\frmListUsers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +142,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Users\ctrlUserInfo.resx">
       <DependentUpon>ctrlUserInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\frmAddUpdataUser.resx">
+      <DependentUpon>frmAddUpdataUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Users\frmListUsers.resx">
       <DependentUpon>frmListUsers.cs</DependentUpon>
