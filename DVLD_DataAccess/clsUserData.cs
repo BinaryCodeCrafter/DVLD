@@ -264,6 +264,7 @@ namespace DVLD_DataAccess
             command.Parameters.AddWithValue("@userName" , userName);
             command.Parameters.AddWithValue("@password" , password);
             command.Parameters.AddWithValue("@isActive" , isActive);
+            command.Parameters.AddWithValue("@userID" , userID);
 
 
             try

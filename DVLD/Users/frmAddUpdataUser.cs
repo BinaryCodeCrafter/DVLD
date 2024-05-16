@@ -76,6 +76,31 @@ namespace DVLD.Users
             ctrlPersonCardWithFilter1.loadPersonInfo(user.personID);
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if(txtPassword.Text != txtConfirmPassword.Text)
+            {
+                MessageBox.Show("Password and Confirm Password fields must match!");
+                return;
+            }
+            user.userName = txtUserName.Text;
+            user.password = txtPassword.Text;
+            user.isActive = cbIsActive.Checked;
 
+            if (user.save())
+            {
+                lblLabel.Text = "Update User";
+                this.Text = "Update User";
+                this.mode = enMode.update;
+                lblUserID.Text = user.userID.ToString();
+                MessageBox.Show("Data Saved Successfully.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Error: Data Is not Saved Successfully.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+
+        }
     }
 }

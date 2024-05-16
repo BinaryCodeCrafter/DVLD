@@ -89,5 +89,12 @@ namespace DVLD.Users
             form.ShowDialog();
             refreshUsers();
         }
+
+        private void btnAddUser_Click(object sender, EventArgs e)
+        {
+            frmAddUpdataUser form = new frmAddUpdataUser();
+            form.ShowDialog();
+            refreshUsers();
+        }
     }
 }
