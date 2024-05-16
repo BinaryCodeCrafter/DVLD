@@ -31,8 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddUpdataUser));
             this.lblLabel = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tpPersonInfo = new System.Windows.Forms.TabPage();
+            this.tpLoginInfo = new System.Windows.Forms.TabPage();
             this.ctrlPersonCardWithFilter1 = new DVLD.People.Controls.ctrlPersonCardWithFilter();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -41,13 +41,14 @@
             this.lblUserID = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtUserName = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtConfirmPassword = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.cbIsActive = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
+            this.tpPersonInfo.SuspendLayout();
+            this.tpLoginInfo.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblLabel
@@ -63,8 +64,8 @@
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tpPersonInfo);
+            this.tabControl1.Controls.Add(this.tpLoginInfo);
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.Location = new System.Drawing.Point(12, 104);
             this.tabControl1.Name = "tabControl1";
@@ -72,35 +73,36 @@
             this.tabControl1.Size = new System.Drawing.Size(916, 599);
             this.tabControl1.TabIndex = 1;
             // 
-            // tabPage1
+            // tpPersonInfo
             // 
-            this.tabPage1.Controls.Add(this.button1);
-            this.tabPage1.Controls.Add(this.ctrlPersonCardWithFilter1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 34);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(908, 561);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Person Info";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tpPersonInfo.Controls.Add(this.button1);
+            this.tpPersonInfo.Controls.Add(this.ctrlPersonCardWithFilter1);
+            this.tpPersonInfo.Location = new System.Drawing.Point(4, 34);
+            this.tpPersonInfo.Name = "tpPersonInfo";
+            this.tpPersonInfo.Padding = new System.Windows.Forms.Padding(3);
+            this.tpPersonInfo.Size = new System.Drawing.Size(908, 561);
+            this.tpPersonInfo.TabIndex = 0;
+            this.tpPersonInfo.Text = "Person Info";
+            this.tpPersonInfo.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
+            // tpLoginInfo
             // 
-            this.tabPage2.Controls.Add(this.textBox1);
-            this.tabPage2.Controls.Add(this.label3);
-            this.tabPage2.Controls.Add(this.textBox2);
-            this.tabPage2.Controls.Add(this.label4);
-            this.tabPage2.Controls.Add(this.txtUserName);
-            this.tabPage2.Controls.Add(this.label2);
-            this.tabPage2.Controls.Add(this.lblUserID);
-            this.tabPage2.Controls.Add(this.label1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 34);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(908, 561);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Login Info";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tpLoginInfo.Controls.Add(this.cbIsActive);
+            this.tpLoginInfo.Controls.Add(this.txtConfirmPassword);
+            this.tpLoginInfo.Controls.Add(this.label3);
+            this.tpLoginInfo.Controls.Add(this.txtPassword);
+            this.tpLoginInfo.Controls.Add(this.label4);
+            this.tpLoginInfo.Controls.Add(this.txtUserName);
+            this.tpLoginInfo.Controls.Add(this.label2);
+            this.tpLoginInfo.Controls.Add(this.lblUserID);
+            this.tpLoginInfo.Controls.Add(this.label1);
+            this.tpLoginInfo.Location = new System.Drawing.Point(4, 34);
+            this.tpLoginInfo.Name = "tpLoginInfo";
+            this.tpLoginInfo.Padding = new System.Windows.Forms.Padding(3);
+            this.tpLoginInfo.Size = new System.Drawing.Size(908, 561);
+            this.tpLoginInfo.TabIndex = 1;
+            this.tpLoginInfo.Text = "Login Info";
+            this.tpLoginInfo.UseVisualStyleBackColor = true;
             // 
             // ctrlPersonCardWithFilter1
             // 
@@ -188,12 +190,12 @@
             this.txtUserName.Size = new System.Drawing.Size(247, 30);
             this.txtUserName.TabIndex = 3;
             // 
-            // textBox2
+            // txtPassword
             // 
-            this.textBox2.Location = new System.Drawing.Point(268, 149);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(247, 30);
-            this.textBox2.TabIndex = 7;
+            this.txtPassword.Location = new System.Drawing.Point(268, 149);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(247, 30);
+            this.txtPassword.TabIndex = 7;
             // 
             // label4
             // 
@@ -205,12 +207,12 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "Password";
             // 
-            // textBox1
+            // txtConfirmPassword
             // 
-            this.textBox1.Location = new System.Drawing.Point(268, 203);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(247, 30);
-            this.textBox1.TabIndex = 9;
+            this.txtConfirmPassword.Location = new System.Drawing.Point(268, 203);
+            this.txtConfirmPassword.Name = "txtConfirmPassword";
+            this.txtConfirmPassword.Size = new System.Drawing.Size(247, 30);
+            this.txtConfirmPassword.TabIndex = 9;
             // 
             // label3
             // 
@@ -221,6 +223,16 @@
             this.label3.Size = new System.Drawing.Size(226, 29);
             this.label3.TabIndex = 8;
             this.label3.Text = "Confirm Password";
+            // 
+            // cbIsActive
+            // 
+            this.cbIsActive.AutoSize = true;
+            this.cbIsActive.Location = new System.Drawing.Point(268, 259);
+            this.cbIsActive.Name = "cbIsActive";
+            this.cbIsActive.Size = new System.Drawing.Size(108, 29);
+            this.cbIsActive.TabIndex = 10;
+            this.cbIsActive.Text = "Is Active";
+            this.cbIsActive.UseVisualStyleBackColor = true;
             // 
             // frmAddUpdataUser
             // 
@@ -233,10 +245,11 @@
             this.Controls.Add(this.lblLabel);
             this.Name = "frmAddUpdataUser";
             this.Text = "frmAddUpdataUser";
+            this.Load += new System.EventHandler(this.frmAddUpdataUser_Load);
             this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
+            this.tpPersonInfo.ResumeLayout(false);
+            this.tpLoginInfo.ResumeLayout(false);
+            this.tpLoginInfo.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -246,8 +259,8 @@
 
         private System.Windows.Forms.Label lblLabel;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tpPersonInfo;
+        private System.Windows.Forms.TabPage tpLoginInfo;
         private People.Controls.ctrlPersonCardWithFilter ctrlPersonCardWithFilter1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
@@ -255,10 +268,11 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblUserID;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtConfirmPassword;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtUserName;
+        private System.Windows.Forms.CheckBox cbIsActive;
     }
 }

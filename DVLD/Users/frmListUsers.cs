@@ -76,5 +76,18 @@ namespace DVLD.Users
             form.ShowDialog();
             refreshUsers();
         }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void toolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            int id = (int)dataGridView1.CurrentRow.Cells[0].Value;
+            frmAddUpdataUser form = new frmAddUpdataUser(id);
+            form.ShowDialog();
+            refreshUsers();
+        }
     }
 }

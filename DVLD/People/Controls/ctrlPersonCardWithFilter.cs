@@ -100,7 +100,7 @@ namespace DVLD.People.Controls
 
         private void ctrlPersonCardWithFilter_Load(object sender, EventArgs e)
         {
-            comboBox1.SelectedIndex = 1;
+            comboBox1.SelectedIndex = 0;
             textBox1.Focus();
         }
 
