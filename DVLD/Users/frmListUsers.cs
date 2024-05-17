@@ -96,5 +96,13 @@ namespace DVLD.Users
             form.ShowDialog();
             refreshUsers();
         }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            int id = (int)dataGridView1.CurrentRow.Cells[0].Value;
+            frmChangePassword form = new frmChangePassword(id);
+            form.ShowDialog();
+            refreshUsers();
+        }
     }
 }
