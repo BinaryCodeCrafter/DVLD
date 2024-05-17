@@ -34,8 +34,8 @@ namespace DVLD.Users
         {
             allUsers = clsUser.getAllUsers();
             dataGridView1.DataSource = allUsers;
-            cbFilter.SelectedIndex = 1;
-            cbFilter2.SelectedIndex = 1;
+            cbFilter.SelectedIndex = 0;
+            cbFilter2.SelectedIndex = 0;
             txtRecords.Text = allUsers.Rows.Count.ToString();
 
 

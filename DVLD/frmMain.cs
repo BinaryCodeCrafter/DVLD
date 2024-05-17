@@ -62,5 +62,17 @@ namespace DVLD
         {
             this.FormClosing += onMainClose;
         }
+
+        private void toolStripMenuItem5_Click(object sender, EventArgs e)
+        {
+            frmUserInfo form = new frmUserInfo(clsGlobal.currentUser.userID);
+            form.ShowDialog();
+        }
+
+        private void toolStripMenuItem6_Click(object sender, EventArgs e)
+        {
+            frmChangePassword form = new frmChangePassword(clsGlobal.currentUser.userID);
+            form.ShowDialog();
+        }
     }
 }
