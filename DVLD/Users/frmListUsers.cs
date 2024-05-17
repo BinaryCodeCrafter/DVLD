@@ -126,7 +126,6 @@ namespace DVLD.Users
         private void txtFilter_TextChanged(object sender, EventArgs e)
         {
             string FilterColumn = "";
-            //Map Selected Filter to real Column name 
             switch (cbFilter.Text)
             {
                 case "User ID":
@@ -151,7 +150,6 @@ namespace DVLD.Users
 
             }
 
-            //Reset the filters in case nothing selected or filter value conains nothing.
             if (txtFilter.Text.Trim() == "" || FilterColumn == "None")
             {
                 allUsers.DefaultView.RowFilter = "";
@@ -161,7 +159,6 @@ namespace DVLD.Users
 
 
             if (FilterColumn != "FullName" && FilterColumn != "UserName")
-                //in this case we deal with numbers not string.
                 allUsers.DefaultView.RowFilter = string.Format("[{0}] = {1}", FilterColumn, txtFilter.Text.Trim());
             else
                 allUsers.DefaultView.RowFilter = string.Format("[{0}] LIKE '{1}%'", FilterColumn, txtFilter.Text.Trim());
@@ -190,7 +187,6 @@ namespace DVLD.Users
             if (FilterValue == "All")
                 allUsers.DefaultView.RowFilter = "";
             else
-                //in this case we deal with numbers not string.
                 allUsers.DefaultView.RowFilter = string.Format("[{0}] = {1}", FilterColumn, FilterValue);
 
                 txtFilter.Text = allUsers.Rows.Count.ToString();
