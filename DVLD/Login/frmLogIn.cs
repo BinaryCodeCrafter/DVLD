@@ -50,7 +50,9 @@ namespace DVLD.Login
                     return;
                 }
 
-                frmMain form = new frmMain();
+                clsGlobal.currentUser = user;
+                frmMain form = new frmMain(this);
+                form.onClose += onClose;
                 this.Hide();
                 form.ShowDialog();
             }
@@ -61,6 +63,11 @@ namespace DVLD.Login
         }
 
         private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void onClose()
         {
             this.Close();
         }

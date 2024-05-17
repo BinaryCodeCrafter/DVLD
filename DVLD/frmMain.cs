@@ -1,9 +1,12 @@
-﻿using DVLD.People;
+﻿using DVLD.GlobalClasses;
+using DVLD.Login;
+using DVLD.People;
 using DVLD.Users;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,11 +17,18 @@ namespace DVLD
 {
     public partial class frmMain : Form
     {
-        public frmMain()
+        frmLogIn frmlogin;
+
+        public event Action onClose;
+
+      
+        public frmMain(frmLogIn frmlogin)
         {
             InitializeComponent();
+            this.frmlogin = frmlogin;
         }
 
+       
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
             frmListPeople peopleList = new frmListPeople();
@@ -30,6 +40,27 @@ namespace DVLD
             frmListUsers form = new frmListUsers();
 
             form.ShowDialog();
+        }
+
+        private void currentUserInfoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            clsGlobal.currentUser = null;
+            this.frmlogin.Show();
+            this.Close();
+        }
+
+
+        private void onMainClose(object sender, FormClosingEventArgs e)
+        {
+            if (!(new StackTrace().GetFrames().Any(x => x.GetMethod().Name == "Close")))
+            {
+                onClose?.Invoke();
+            }
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            this.FormClosing += onMainClose;
         }
     }
 }
