@@ -86,6 +86,7 @@ namespace DVLD.Users
             user.userName = txtUserName.Text;
             user.password = txtPassword.Text;
             user.isActive = cbIsActive.Checked;
+            user.personID = ctrlPersonCardWithFilter1.PersonID;
 
             if (user.save())
             {
@@ -101,6 +102,45 @@ namespace DVLD.Users
 
             }
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if(mode == enMode.update)
+            {
+                tpLoginInfo.Enabled = true;
+                tabControl1.SelectedIndex = 1;
+                return;
+            }
+
+            if (ctrlPersonCardWithFilter1.PersonID != 1)
+            {
+
+                if (clsUser.isUserExistForUPersonID(ctrlPersonCardWithFilter1.PersonID))
+                {
+                    MessageBox.Show("Selected Person already has a user, choose another one.", "Select another Person", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ctrlPersonCardWithFilter1.Focus();
+                }
+
+                else
+                {
+                    tpLoginInfo.Enabled = true;
+                    tabControl1.SelectedIndex = 1;
+                }
+
+
+            }
+            else
+            {
+                MessageBox.Show("Please Select a Person", "Select a Person", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ctrlPersonCardWithFilter1.Focus();
+            }
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

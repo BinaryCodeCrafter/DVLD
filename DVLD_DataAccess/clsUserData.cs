@@ -204,8 +204,8 @@ namespace DVLD_DataAccess
 
             SqlConnection connection = new SqlConnection(SettingsDataAccess.connectionString);
 
-            string query = @"insert into table Users (PersonID , UserName , Password ,IsActive)
-                            values (@personID , @userName , @password ,@ isActive);
+            string query = @"insert into Users (PersonID , UserName , Password ,IsActive)
+                            values (@personID , @userName , @password ,@isActive);
                              select scope_identity();";
 
             SqlCommand command = new SqlCommand(query, connection);
@@ -397,7 +397,7 @@ namespace DVLD_DataAccess
 
             SqlConnection connection = new SqlConnection(SettingsDataAccess.connectionString);
 
-            string query = @"select found=1 from Users where PersonIe = @personID";
+            string query = @"select found=1 from Users where PersonID = @personID";
 
             SqlCommand command = new SqlCommand(query , connection);
 
