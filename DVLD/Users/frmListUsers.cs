@@ -104,5 +104,96 @@ namespace DVLD.Users
             form.ShowDialog();
             refreshUsers();
         }
+
+        private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        
+            if(cbFilter.Text == "Is Active") {
+                cbFilter2.Visible = true;
+                txtFilter.Visible = false;
+            }
+            else
+            {
+            txtFilter.Visible = cbFilter.Text != "None";
+
+            txtFilter.Text = "";
+ 
+            }
+
+
+        }
+
+        private void txtFilter_TextChanged(object sender, EventArgs e)
+        {
+            string FilterColumn = "";
+            //Map Selected Filter to real Column name 
+            switch (cbFilter.Text)
+            {
+                case "User ID":
+                    FilterColumn = "UserID";
+                    break;
+                case "UserName":
+                    FilterColumn = "UserName";
+                    break;
+
+                case "Person ID":
+                    FilterColumn = "PersonID";
+                    break;
+
+
+                case "Full Name":
+                    FilterColumn = "FullName";
+                    break;
+
+                default:
+                    FilterColumn = "None";
+                    break;
+
+            }
+
+            //Reset the filters in case nothing selected or filter value conains nothing.
+            if (txtFilter.Text.Trim() == "" || FilterColumn == "None")
+            {
+                allUsers.DefaultView.RowFilter = "";
+                txtRecords.Text =dataGridView1.Rows.Count.ToString();
+                return;
+            }
+
+
+            if (FilterColumn != "FullName" && FilterColumn != "UserName")
+                //in this case we deal with numbers not string.
+                allUsers.DefaultView.RowFilter = string.Format("[{0}] = {1}", FilterColumn, txtFilter.Text.Trim());
+            else
+                allUsers.DefaultView.RowFilter = string.Format("[{0}] LIKE '{1}%'", FilterColumn, txtFilter.Text.Trim());
+
+            txtRecords.Text = allUsers.Rows.Count.ToString();
+        }
+
+        private void cbFilter2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string FilterColumn = "IsActive";
+            string FilterValue = cbFilter2.Text;
+
+            switch (FilterValue)
+            {
+                case "All":
+                    break;
+                case "Yes":
+                    FilterValue = "1";
+                    break;
+                case "No":
+                    FilterValue = "0";
+                    break;
+            }
+
+
+            if (FilterValue == "All")
+                allUsers.DefaultView.RowFilter = "";
+            else
+                //in this case we deal with numbers not string.
+                allUsers.DefaultView.RowFilter = string.Format("[{0}] = {1}", FilterColumn, FilterValue);
+
+                txtFilter.Text = allUsers.Rows.Count.ToString();
+        }
     }
 }

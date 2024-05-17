@@ -100,14 +100,16 @@
             this.cbFilter.Name = "cbFilter";
             this.cbFilter.Size = new System.Drawing.Size(190, 33);
             this.cbFilter.TabIndex = 3;
+            this.cbFilter.SelectedIndexChanged += new System.EventHandler(this.cbFilter_SelectedIndexChanged);
             // 
             // txtFilter
             // 
             this.txtFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFilter.Location = new System.Drawing.Point(484, 240);
+            this.txtFilter.Location = new System.Drawing.Point(331, 240);
             this.txtFilter.Name = "txtFilter";
             this.txtFilter.Size = new System.Drawing.Size(239, 30);
             this.txtFilter.TabIndex = 4;
+            this.txtFilter.TextChanged += new System.EventHandler(this.txtFilter_TextChanged);
             // 
             // cbFilter2
             // 
@@ -117,10 +119,12 @@
             "All",
             "Yes",
             "No"});
-            this.cbFilter2.Location = new System.Drawing.Point(329, 237);
+            this.cbFilter2.Location = new System.Drawing.Point(331, 237);
             this.cbFilter2.Name = "cbFilter2";
             this.cbFilter2.Size = new System.Drawing.Size(128, 33);
             this.cbFilter2.TabIndex = 5;
+            this.cbFilter2.Visible = false;
+            this.cbFilter2.SelectedIndexChanged += new System.EventHandler(this.cbFilter2_SelectedIndexChanged);
             // 
             // dataGridView1
             // 
@@ -147,7 +151,7 @@
             this.toolStripSeparator2,
             this.sToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(227, 234);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(213, 206);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // toolStripMenuItem1
