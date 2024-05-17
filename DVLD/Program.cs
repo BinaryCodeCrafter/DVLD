@@ -1,4 +1,5 @@
-﻿using DVLD.Login;
+﻿using DVLD.ApplicationTypes;
+using DVLD.Login;
 using DVLD.People;
 using System;
 using System.Collections.Generic;
@@ -24,7 +25,7 @@ namespace DVLD
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmLogIn());
+            Application.Run(new frmApplicatinoTypes());
         }
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         private static extern bool SetProcessDPIAware();

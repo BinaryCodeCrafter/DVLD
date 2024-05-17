@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DVLD_DataAccess;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -26,12 +27,12 @@ namespace DVLD_Business
 
         public static DataTable getAllApplicationTypes()
         {
-            return clsApplicationType.getAllApplicationTypes();
+            return clsApplicationTypeData.getAllApplicationTypes();
         }
 
         public static bool uptateFees(int id , string title,  int fees)
         {
-            return clsApplicationType.uptateFees(id, title, fees);
+            return clsApplicationTypeData.updateApplication(id, title, fees);
         }
 
 
