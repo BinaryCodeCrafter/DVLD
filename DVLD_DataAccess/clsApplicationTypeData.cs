@@ -58,7 +58,7 @@ namespace DVLD_DataAccess
             SqlConnection connection = new SqlConnection(SettingsDataAccess.connectionString);
 
             string query = @"update ApplicationTypes set 
-                                ApplicationTitle = @title ,
+                                ApplicationTypeTitle = @title ,
                                 ApplicationFees = @fee 
                                  where ApplicationTypeID = @id";
 
@@ -85,8 +85,52 @@ namespace DVLD_DataAccess
             return rowsAffected > 0;
         }
 
+
+        public static bool findApplicationTypeByID(int id , ref string title,
+                                                    ref int fees )
+        {
+            bool isFound = false;
+
+            SqlConnection connection = new SqlConnection(SettingsDataAccess.connectionString);
+
+            string query = @"select * from ApplicationTypes 
+                             where ApplicationTypeID = @id";
+
+            SqlCommand command = new SqlCommand(query , connection);
+
+            command.Parameters.AddWithValue("@id", id);
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    title = (string)reader["ApplicationTypeTitle"];
+                    fees = (int)((decimal)reader["ApplicationFees"]);
+
+                    isFound = true;
+                }
+                reader.Close();
+            }
+            catch( Exception e )
+            {
+                isFound = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isFound;
+            
+        }
+
     }
 }
+
 
 
 

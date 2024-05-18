@@ -44,6 +44,17 @@ namespace DVLD.ApplicationTypes
             
             
         }
+
+        private void editApplicationTypeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int id = (int)dataGridView1.CurrentRow.Cells[0].Value;
+
+            frmUpdateApplicationType form = new frmUpdateApplicationType(id);
+
+            form.ShowDialog();
+
+            dataGridView1.DataSource = clsApplicationType.getAllApplicationTypes();
+        }
     }
 }
 

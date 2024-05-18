@@ -30,11 +30,27 @@ namespace DVLD_Business
             return clsApplicationTypeData.getAllApplicationTypes();
         }
 
-        public static bool uptateFees(int id , string title,  int fees)
+        public bool uptateFees()
         {
-            return clsApplicationTypeData.updateApplication(id, title, fees);
+            return clsApplicationTypeData.updateApplication(applicationTypeID,
+                        applicationTypeTitle, applicationFees);
         }
 
+        public static clsApplicationType findApplicationTypeByID(int id)
+        {
+            string title = "";
+            int fees = 0;
+
+            if (clsApplicationTypeData.findApplicationTypeByID(id, ref title,
+                                        ref fees))
+            {
+                return new clsApplicationType(id, title, fees);
+            }
+            else
+            {
+                return null;
+            }
+        }
 
 
 
