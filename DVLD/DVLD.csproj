@@ -109,6 +109,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestTypes\frmTestTypesList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TestTypes\frmTestTypesList.Designer.cs">
+      <DependentUpon>frmTestTypesList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TestTypes\frmUpdateTestType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TestTypes\frmUpdateTestType.Designer.cs">
+      <DependentUpon>frmUpdateTestType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Users\ctrlUserInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -174,6 +186,12 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="TestTypes\frmTestTypesList.resx">
+      <DependentUpon>frmTestTypesList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TestTypes\frmUpdateTestType.resx">
+      <DependentUpon>frmUpdateTestType.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Users\ctrlUserInfo.resx">
       <DependentUpon>ctrlUserInfo.cs</DependentUpon>
     </EmbeddedResource>
@@ -225,8 +243,6 @@
   <ItemGroup>
     <None Include="Resources\Female 512.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="TestTypes\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

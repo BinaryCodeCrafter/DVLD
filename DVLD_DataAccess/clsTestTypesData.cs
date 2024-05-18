@@ -18,7 +18,7 @@ namespace DVLD_DataAccess
 
             SqlConnection connection = new SqlConnection(SettingsDataAccess.connectionString);
 
-            string query = @"select * from TestTypes";
+            string query = @"SELECT * FROM TestTypes order by TestTypeID";
 
             SqlCommand command = new SqlCommand(query, connection);
 
@@ -28,7 +28,7 @@ namespace DVLD_DataAccess
 
                 SqlDataReader reader = command.ExecuteReader();
 
-                if (reader.Read())
+                if (reader.HasRows)
                 {
                     data.Load(reader);
                 }
@@ -97,7 +97,7 @@ namespace DVLD_DataAccess
 
             SqlConnection connection = new SqlConnection(SettingsDataAccess.connectionString);
 
-            string query = @"uptate TestType
+            string query = @"update TestTypes
                                 set TestTypeTitle = @title ,
                                     TestTypeDescription = @desc ,
                                     TestTypeFees = @fees 

@@ -12,10 +12,10 @@ namespace DVLD_Business
     public class clsTestType
     {
 
-        private int id { get; set; }
-        private string title { get; set; }
-        private string description { get; set; }
-        private int fees { get; set; }
+        public int id { get; set; }
+        public string title { get; set; }
+        public string description { get; set; }
+        public int fees { get; set; }
 
         private clsTestType(int id, string title, string description, int fees)
         {
