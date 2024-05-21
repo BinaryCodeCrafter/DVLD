@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -184,10 +186,92 @@ namespace DVLD_DataAccess
         }
 
 
+        public static bool updateApplication(int applicationID , int applicationPersonID,
+                                             DateTime applicationDate , int applicationTypeID,
+                                             int applicationStatus , DateTime lastStatusDate,
+                                             int paidFees , int createdByUserID)
+        {
+            int rowsAffected = 0;
+
+            SqlConnection connection = new SqlConnection(SettingsDataAccess.connectionString);
+
+            string query = @"update Appilcations set
+                             ApplicationPersonID = @applicationPersonID ,
+                             ApplicationDate = @applicationDate,
+                             ApplicationTypeID = @applicationTypeID,
+                             ApplicatinoStatus = @applicaitonStatus,
+                             LastStatusDate = @lastStatusDate,
+                             PaidFees = @paidFees ,CreatedByUserID = @createdByUserID
+                            where ApplicationID = @applicationID";
+            
+            SqlCommand command = new SqlCommand(query , connection);
+
+            command.Parameters.AddWithValue("@applicationPersonID" , applicationPersonID);
+            command.Parameters.AddWithValue("@applicationDate" , applicationDate);
+            command.Parameters.AddWithValue("@applicationTypeID" , applicationTypeID);
+            command.Parameters.AddWithValue("@applicationStatus" , applicationStatus);
+            command.Parameters.AddWithValue("@lastStatusDate" , lastStatusDate);
+            command.Parameters.AddWithValue("@paidFees" , paidFees);
+            command.Parameters.AddWithValue("@createdByUserID" , createdByUserID);
+            command.Parameters.AddWithValue("@applicationID" , applicationID);
+
+
+            try
+            {
+                connection.Open();
+
+                rowsAffected = command.ExecuteNonQuery();
+            }catch(Exception e)
+            {
+                rowsAffected = 0;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return rowsAffected > 0;
+            
+        }
+
+
+        public static bool deleteApplication(int id)
+        {
+            int rowsAffected = 0;
+
+            SqlConnection connection = new SqlConnection(SettingsDataAccess.connectionString);
+
+            string query = @"delete Application where ApplicationID = @id";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@id" ,id);
+
+            try
+            {
+                connection.Open();
+
+                rowsAffected = command.ExecuteNonQuery();
+
+            }catch(Exception e)
+            {
+                rowsAffected = 0;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return rowsAffected > 0;
+        }
+
+
 
     }
 
 }
+
+
+
 
 
 
