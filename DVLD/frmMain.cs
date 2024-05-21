@@ -2,6 +2,7 @@
 using DVLD.GlobalClasses;
 using DVLD.Login;
 using DVLD.People;
+using DVLD.TestTypes;
 using DVLD.Users;
 using System;
 using System.Collections.Generic;
@@ -79,6 +80,12 @@ namespace DVLD
         private void toolStripMenuItem4_Click(object sender, EventArgs e)
         {
             frmApplicatinoTypes form = new frmApplicatinoTypes();
+            form.ShowDialog();
+        }
+
+        private void manageApplicationsTypesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmTestTypesList form = new frmTestTypesList();
             form.ShowDialog();
         }
     }
