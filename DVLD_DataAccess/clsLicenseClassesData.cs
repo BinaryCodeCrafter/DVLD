@@ -219,7 +219,7 @@ namespace DVLD_DataAccess
 
                 object result = command.ExecuteScalar();
 
-                if (result != null && int.TryParse(result.toString() , out int insertedID)) {
+                if (result != null && int.TryParse(result.ToString() , out int insertedID)) {
                     id = insertedID;
                 }
             }catch (Exception e)
