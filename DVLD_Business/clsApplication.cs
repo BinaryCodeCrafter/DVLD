@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
@@ -88,7 +89,7 @@ namespace DVLD_Business
             return clsApplicationsData.getAllApplications();
         }
 
-        public clsApplication findApplicationByID(int applicationID)
+        public static clsApplication findApplicationByID(int applicationID)
         {
             int applicationTypeID = -1, applicationPersonID = -1;
             DateTime applicationDate = DateTime.Now, lastStatusDate = DateTime.Now;
@@ -98,8 +99,8 @@ namespace DVLD_Business
                 ref applicationDate, ref applicationTypeID, ref applicationStatus,
                 ref lastStatusDate, ref paidFees, ref createdByUserID))
             {
-                return new clsApplication(applicationID , applicationPersonID , applicationTypeID,
-                    applicationDate , (enApplicationStatus)applicationStatus , lastStatusDate , paidFees , createdByUserID);
+                return new clsApplication(applicationID, applicationPersonID, applicationTypeID,
+                    applicationDate, (enApplicationStatus)applicationStatus, lastStatusDate, paidFees, createdByUserID);
             }
             else
             {
@@ -124,15 +125,15 @@ namespace DVLD_Business
 
         private bool updateApplication()
         {
-            return clsApplicationsData.updateApplication(applicationID , applicatinoPersonID ,
-                applicationDate , applicatinoTypeID , (int)applicationStatus , lastStatusDate ,
-                paidFees , createdByUserID);
+            return clsApplicationsData.updateApplication(applicationID, applicatinoPersonID,
+                applicationDate, applicatinoTypeID, (int)applicationStatus, lastStatusDate,
+                paidFees, createdByUserID);
         }
 
 
         public bool save()
         {
-            if(this.mode == enMode.addNew)
+            if (this.mode == enMode.addNew)
             {
                 if (addNewApplication())
                 {
@@ -153,6 +154,42 @@ namespace DVLD_Business
         public static bool dalete(int id)
         {
             return clsApplicationsData.deleteApplication(id);
+        }
+
+        public static clsApplication getActiveApplication(int personID, int applicationTypeID)
+        {
+            int activeAppID = clsApplicationsData.getActiveApplicationID(personID, applicationTypeID);
+            clsApplication activeApp = clsApplication.findApplicationByID(activeAppID);
+            if (activeApp != null)
+            {
+                return activeApp;
+            }
+            else
+            {
+                return null;
+            }
+
+        }
+
+        public static int getActiveApplicationID(int personID, int applicationTypeID)
+        {
+            return clsApplicationsData.getActiveApplicationID(personID, applicationTypeID);
+        }
+
+
+        public static bool doesPersonHaveActiveApplicationID(int personID, int applicationTypeID)
+        {
+            return clsApplicationsData.deosPersonHaveActiveApplicationID(personID , applicationTypeID);
+        }
+
+        public static int getActiveApplicationIDForLisenceClass
+            (int personID , int applicationTypeID ,int lisenceClass)
+        {
+            return clsApplicationsData.getActiveApplicationIDForLiseceClass(personID , applicationTypeID , lisenceClass);   
+        }
+        
+        public bool updateStatus(int status) {
+            return clsApplicationsData.updateStatus(this.applicationID , status);
         }
 
     }
