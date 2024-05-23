@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -265,10 +266,133 @@ namespace DVLD_DataAccess
         }
 
 
+        public static int getActiveApplicationID(int personID , int applicationTypeID)
+        {
+            int activeApplicationID = -1;
+
+            SqlConnection connection = new SqlConnection(SettingsDataAccess.connectionString);
+
+            string query = @"select activeApplicationID=ApplicationID from Applications where
+                             ApplicationPersonID = @applicationPersonID and
+                             ApplicationTypeID = @applicationTypeID and
+                             ApplicationStatus = 1";
+
+            SqlCommand command = new SqlCommand(query , connection);
+
+            command.Parameters.AddWithValue("applicationPersonID" , personID);
+            command.Parameters.AddWithValue("applicationTypeID" , applicationTypeID);
+            try
+            {
+                connection.Open();
+
+                object result = command.ExecuteScalar();
+
+                if(result != null && int.TryParse(result.ToString() , out int appID))
+                {
+                    activeApplicationID = appID;
+                }
+            }catch(Exception e)
+            {
+                activeApplicationID = -1;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return activeApplicationID;
+
+        }
+
+
+        public static bool deosPersonHaveActiveApplicationID(int personID , int applicationTypeID)
+        {
+            return getActiveApplicationID(personID , applicationTypeID) != -1;
+        }
+
+
+        public static int getActiveApplicationIDForLiseceClass
+            (int personId , int applicationTypeID , int lisenceClassID)
+        {
+            int activeApplicationID = -1;
+
+            SqlConnection connection = new SqlConnection(SettingsDataAccess.connectionString);
+
+            string query = @"select * from Applications inner join LocalDrivingLicenseApplications
+                    on Applications.ApplicationID = LocalDrivingLicenseApplications.ApplicationID
+                where ApplicantPersonID = @applicationPersonID
+                and ApplicationTypeID = @applicationTypeID
+                and LocalDrivingLicenseApplications.LicenseClassID = @lisenceClassID
+                and ApplicationStatus = 1";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@applicationPersonID" , personId);
+            command.Parameters.AddWithValue("@applicationTypeID" , applicationTypeID);
+            command.Parameters.AddWithValue("@liseceClassID" , lisenceClassID);
+
+            try
+            {
+                connection.Open();
+
+                object result = command.ExecuteScalar();
+
+                if(result != null && int.TryParse(result.ToString() , out int id))
+                {
+                    activeApplicationID = id;
+                }
+
+            }catch(Exception e)
+            {
+                activeApplicationID = -1;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return activeApplicationID;
+        }
+
+        public static bool updateStatus(int personID , int newStatus)
+        {
+            int rowsAffected = 0;
+
+            SqlConnection connection = new SqlConnection(SettingsDataAccess.connectionString);
+
+            string query = @"update Applications set
+                             ApplicationStatus = @newStatus
+                             where ApplicationPersonID = @personID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@newStatus" , newStatus);
+            command.Parameters.AddWithValue("@personID" , personID);
+
+            try
+            {
+                connection.Open();
+
+                rowsAffected = command.ExecuteNonQuery();
+            }catch(Exception e)
+            {
+                rowsAffected = 0;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return rowsAffected > 0;
+        }
 
     }
 
 }
+
+
+
+
 
 
 
