@@ -361,13 +361,15 @@ namespace DVLD_DataAccess
             SqlConnection connection = new SqlConnection(SettingsDataAccess.connectionString);
 
             string query = @"update Applications set
-                             ApplicationStatus = @newStatus
+                             ApplicationStatus = @newStatus,
+                             LastStatusDate = @lastStatusDate
                              where ApplicationPersonID = @personID";
 
             SqlCommand command = new SqlCommand(query, connection);
 
             command.Parameters.AddWithValue("@newStatus" , newStatus);
             command.Parameters.AddWithValue("@personID" , personID);
+            command.Parameters.AddWithValue("@lastStatusDate" , DateTime.Now);
 
             try
             {
