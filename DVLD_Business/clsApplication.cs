@@ -50,6 +50,7 @@ namespace DVLD_Business
 
         public clsApplicationType applicationTypeInfo;
 
+        public clsPerson person;
 
         public clsApplication()
         {
@@ -79,6 +80,7 @@ namespace DVLD_Business
             this.mode = enMode.update;
             this.applicatinoTypeID = applicatinoTypeID;
             this.applicationTypeInfo = clsApplicationType.findApplicationTypeByID(applicationTypeID);
+            this.person = clsPerson.find(applicationPersonID);
             this.user = clsUser.findUserByPersonID(userID);
             this.mode = enMode.update;
         }
