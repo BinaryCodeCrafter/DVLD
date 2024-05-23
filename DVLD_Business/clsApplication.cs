@@ -108,8 +108,17 @@ namespace DVLD_Business
             }
         }
 
+        public bool cancel()
+        {
+            return clsApplicationsData.updateStatus(applicationID, 2);
+        }
 
+        public bool setComplete()
+        {
+            return clsApplicationsData.updateStatus(applicationID, 3);
+        }
         public static bool isApplicationExistByApplicationID(int id)
+
         {
             return clsApplicationsData.isApplicationExistByApplicationID(id);
         }
