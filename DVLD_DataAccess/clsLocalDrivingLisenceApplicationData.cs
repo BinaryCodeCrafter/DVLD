@@ -202,6 +202,39 @@ namespace DVLD_DataAccess
 
         }
 
+        public static bool deleteLocalDrivingLicenseApplication(int id)
+        {
+            int rowsAffected = 0;
+
+            SqlConnection connection = new SqlConnection(SettingsDataAccess.connectionString);
+
+            string query = @"delete LocalDrivingLicenseApplications where
+                             LocalDrivingLicnseApplicationID = @id";
+
+            SqlCommand commmand = new SqlCommand(query , connection);
+
+
+            commmand.Parameters.AddWithValue("@id" , id);
+
+            try
+            {
+                connection.Open();
+
+                rowsAffected = commmand.ExecuteNonQuery();
+
+            }catch(Exception e)
+            {
+                rowsAffected = 0;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+
+            return rowsAffected > 0;
+        
+        }
     }
 }
 
