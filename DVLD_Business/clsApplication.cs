@@ -50,7 +50,7 @@ namespace DVLD_Business
 
         public clsApplicationType applicationTypeInfo;
 
-        public clsPerson person;
+        public clsPerson person { get; set; }
 
         public clsApplication()
         {
