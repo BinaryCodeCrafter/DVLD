@@ -77,6 +77,7 @@ namespace DVLD_Business
             this.lastStatusDate = lastStatusDate;
             this.applicationStatus = status;
             this.createdByUserID = userID;
+            this.paidFees = paidFees;
             this.mode = enMode.update;
             this.applicatinoTypeID = applicatinoTypeID;
             this.applicationTypeInfo = clsApplicationType.findApplicationTypeByID(applicationTypeID);

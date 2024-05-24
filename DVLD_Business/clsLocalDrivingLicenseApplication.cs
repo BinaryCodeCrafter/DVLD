@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DVLD_DataAccess;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,7 +31,7 @@ namespace DVLD_Business
         }
 
 
-        public clsLocalDrivingLicenseApplication(int localDrivingLicenseApplicationID ,
+        private clsLocalDrivingLicenseApplication(int localDrivingLicenseApplicationID ,
             int applicationID , int applicationPersonID , DateTime applicationDate , 
             int applicationTypeID , enApplicationStatus applicationStatus , DateTime lastStatusDate,
             int paidFees , int createdByUserID , int licenseClassID)
@@ -49,6 +50,46 @@ namespace DVLD_Business
             this.lisenceClass = clsLisenceClass.findLisenceClassByID(licenseClassID);
         }
 
+
+        public bool addNewLocalDrivingLicenseApplication()
+        {
+            this.localDrivingLicenseApplicationID =  clsLocalDrivinglicenseApplicationData.addNewLocalDrivinglicenseApplication(
+                this.applicationID , this.applicationID);
+            return this.localDrivingLicenseApplicationID != -1;
+        }
+
+        public bool updateLocalDrivingLicenseApplication()
+        {
+            int applicationID = -1, licenseClassID = -1;
+
+            return clsLocalDrivinglicenseApplicationData.updateLocalDrivingLiceseApplication(
+               this.localDrivingLicenseApplicationID ,applicationID ,licenseClassID );
+        }
+
+
+        public static clsLocalDrivingLicenseApplication findLocalDrivingLicneseApplicationByID(
+            int loaclDrivingLicenseApplicationID)
+        {
+            int applicationID = -1 , licenseClassID = -1;
+
+            bool isFound = clsLocalDrivinglicenseApplicationData.findLocalDrivingLicenseApplicationByItsID(
+                loaclDrivingLicenseApplicationID, ref applicationID, ref licenseClassID);
+
+            if (isFound)
+            {
+                clsApplication application = clsApplication.findApplicationByID(applicationID);
+
+                return new clsLocalDrivingLicenseApplication(loaclDrivingLicenseApplicationID ,
+                    applicationID , application.applicationID , application.applicationDate,
+                    application.applicatinoTypeID , application.applicationStatus,
+                    application.lastStatusDate , application.paidFees,
+                    application.createdByUserID , licenseClassID);
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }
 
