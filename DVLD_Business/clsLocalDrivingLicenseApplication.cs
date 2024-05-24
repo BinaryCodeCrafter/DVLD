@@ -1,6 +1,7 @@
 ﻿using DVLD_DataAccess;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Security.Principal;
 using System.Text;
@@ -151,6 +152,36 @@ namespace DVLD_Business
 
 
         }
+
+
+        public static DataTable getAllLocalDrivingLicenseApplications()
+        {
+            return clsLocalDrivinglicenseApplicationData.getAllLocalDrivinglicenseApplications();
+        }
+
+        public bool delete()
+        {
+            bool isThisDeleted = false;
+            bool isBaseDeleted = false;
+
+            isThisDeleted = clsLocalDrivinglicenseApplicationData
+                .deleteLocalDrivingLicenseApplication(this.localDrivingLicenseApplicationID);
+
+            if (!isThisDeleted)
+            {
+                return false;
+            }
+
+            isBaseDeleted = clsApplication.dalete(base.applicationID);
+
+            return isBaseDeleted;   
+            
+        }
+
+
+
+
+
     }
 
 }
