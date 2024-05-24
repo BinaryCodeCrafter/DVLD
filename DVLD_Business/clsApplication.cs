@@ -14,8 +14,8 @@ namespace DVLD_Business
     public class clsApplication
     {
 
-        enum enMode { addNew = 0, update = 1 }
-        enMode mode = enMode.addNew;
+        public enum enMode { addNew = 0, update = 1 }
+        public enMode mode = enMode.addNew;
 
         public enum enApplicationType
         {

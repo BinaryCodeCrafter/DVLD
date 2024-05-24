@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -69,6 +70,7 @@ namespace DVLD_Business
 
         public static clsLocalDrivingLicenseApplication findLocalDrivingLicneseApplicationByID(
             int loaclDrivingLicenseApplicationID)
+
         {
             int applicationID = -1 , licenseClassID = -1;
 
@@ -87,10 +89,70 @@ namespace DVLD_Business
             }
             else
             {
+
                 return null;
             }
         }
+
+        public static clsLocalDrivingLicenseApplication
+            findLocalDrivingLicenseApplicationByApplicationID(int applicationID)
+        {
+            int localDrivingLicenseApplicationID = -1, licenseClassID = -1;
+
+            bool isFound = clsLocalDrivinglicenseApplicationData
+                .findLocalDrivingLicenseApplicationByApplicationID(
+                applicationID , ref localDrivingLicenseApplicationID , ref licenseClassID);
+
+            if (isFound)
+            {
+                clsApplication application = clsApplication.findApplicationByID(applicationID);
+
+                return new clsLocalDrivingLicenseApplication(localDrivingLicenseApplicationID,
+                   applicationID, application.applicationID, application.applicationDate,
+                   application.applicatinoTypeID, application.applicationStatus,
+                   application.lastStatusDate, application.paidFees,
+                   application.createdByUserID, licenseClassID);
+            }
+            else
+            {
+                return null;
+            }
+
+
+        }
+
+        public bool save()
+        {
+
+            base.mode = (clsApplication.enMode)this.mode;
+            if (!base.save())
+            {
+                return false;
+            }
+
+            switch (this.mode)
+            {
+                case enMode.addNew:
+                    if (addNewLocalDrivingLicenseApplication())
+                    {
+                        this.mode = enMode.update;
+                        base.mode = (clsApplication.enMode)this.mode;
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                case enMode.update:
+                    return updateLocalDrivingLicenseApplication();
+            }
+
+            return false;
+
+
+        }
     }
+
 }
 
 
