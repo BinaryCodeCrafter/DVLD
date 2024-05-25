@@ -1,4 +1,5 @@
-﻿using DVLD.ApplicationTypes;
+﻿using DVLD.Applications.LocalDrivingLicenseApplication;
+using DVLD.ApplicationTypes;
 using DVLD.GlobalClasses;
 using DVLD.Login;
 using DVLD.People;
@@ -86,6 +87,12 @@ namespace DVLD
         private void manageApplicationsTypesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmTestTypesList form = new frmTestTypesList();
+            form.ShowDialog();
+        }
+
+        private void localDrivingLicenseApplicationsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAddUpdateLocalDrivingLicenseApplication form = new frmAddUpdateLocalDrivingLicenseApplication();
             form.ShowDialog();
         }
     }

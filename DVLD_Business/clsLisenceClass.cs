@@ -82,7 +82,7 @@ namespace DVLD_Business
                                         minimumAllowedAge, defaultValidityLenght, classFees);
         }
 
-        public DataTable getAllLiseceClasses()
+        public static DataTable getAllLiseceClasses()
         {
             return clsLicenseClassesData.getAllLicenseClasses();
         }
