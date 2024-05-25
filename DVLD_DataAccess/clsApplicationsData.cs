@@ -145,9 +145,9 @@ namespace DVLD_DataAccess
 
             SqlConnection connection = new SqlConnection(SettingsDataAccess.connectionString);
 
-            string query = @"insert into Applicatinos (ApplicationPersonID , ApplicationDate,
+            string query = @"insert into Applications (ApplicantPersonID , ApplicationDate,
                             ApplicationTypeID , ApplicationStatus , LastStatusDate,
-                            PaidFees, CreatedByUserID) valuse 
+                            PaidFees, CreatedByUserID) values
                             (@applicationPersonID , @ApplicationDate , @ApplicationTypeID,
                              @applicationStatus , @lastStatusDate , @paidFees ,
                              @createdByUserID);
@@ -158,6 +158,7 @@ namespace DVLD_DataAccess
             command.Parameters.AddWithValue("@applicationPersonID" , applicationPersonID);
             command.Parameters.AddWithValue("@applicationDate" , ApplicationDate);
             command.Parameters.AddWithValue("@applicationTypeID" ,applicationTypeID);
+            command.Parameters.AddWithValue("@createdByUserID" ,applicationTypeID);
             command.Parameters.AddWithValue("@applicationStatus" , applicationStatus);
             command.Parameters.AddWithValue("@lastStatusDate" , applicationStatus);
             command.Parameters.AddWithValue("@paidFees" , createdByUserID);
@@ -322,14 +323,14 @@ namespace DVLD_DataAccess
                     on Applications.ApplicationID = LocalDrivingLicenseApplications.ApplicationID
                 where ApplicantPersonID = @applicationPersonID
                 and ApplicationTypeID = @applicationTypeID
-                and LocalDrivingLicenseApplications.LicenseClassID = @lisenceClassID
+                and LocalDrivingLicenseApplications.LicenseClassID = @licenseClassID
                 and ApplicationStatus = 1";
 
             SqlCommand command = new SqlCommand(query, connection);
 
             command.Parameters.AddWithValue("@applicationPersonID" , personId);
             command.Parameters.AddWithValue("@applicationTypeID" , applicationTypeID);
-            command.Parameters.AddWithValue("@liseceClassID" , lisenceClassID);
+            command.Parameters.AddWithValue("@licenseClassID" , lisenceClassID);
 
             try
             {

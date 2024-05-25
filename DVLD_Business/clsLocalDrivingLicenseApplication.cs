@@ -56,7 +56,7 @@ namespace DVLD_Business
         public bool addNewLocalDrivingLicenseApplication()
         {
             this.localDrivingLicenseApplicationID =  clsLocalDrivinglicenseApplicationData.addNewLocalDrivinglicenseApplication(
-                this.applicationID , this.applicationID);
+                this.applicationID , this.licenseClassID);
             return this.localDrivingLicenseApplicationID != -1;
         }
 

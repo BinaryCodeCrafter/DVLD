@@ -130,7 +130,7 @@ namespace DVLD_DataAccess
 
             SqlConnection connection = new SqlConnection(SettingsDataAccess.connectionString);
 
-            string query = @"insert into LocalDrivingLicenseApplicatinos
+            string query = @"insert into LocalDrivingLicenseApplications
                           (ApplicationID , LicenseClassID)
                             values (@applicationID , @licenseClassID);
                              select scope_identity();";
