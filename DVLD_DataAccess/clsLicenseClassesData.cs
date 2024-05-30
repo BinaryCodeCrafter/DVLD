@@ -55,7 +55,7 @@ namespace DVLD_DataAccess
 
             SqlConnection connection = new SqlConnection(SettingsDataAccess.connectionString);
 
-            string query = @"select * from LicenseClasses where LicenseClassName = @name";
+            string query = @"select * from LicenseClasses where ClassName = @name";
 
             SqlCommand command = new SqlCommand(query, connection);
 
@@ -74,9 +74,9 @@ namespace DVLD_DataAccess
 
                     id = (int)reader["LicenseClassID"];
                     classDescription = (string)reader["ClassDescription"];
-                    minimalAllowedAge = (int)reader["MinimumAllowedAge"];
-                    DefaultValidityLength = (int)reader["DefaultValidityLength"];
-                    classFees = (int)reader["ClassFees"];
+                    minimalAllowedAge =(byte)reader["MinimumAllowedAge"];
+                    DefaultValidityLength = (byte)reader["DefaultValidityLength"];
+                    classFees =  (int)(Convert.ToSingle(reader["ClassFees"]));
 
                 }
             } catch (Exception e)

@@ -132,7 +132,7 @@ namespace DVLD.Applications.LocalDrivingLicenseApplication
         private void btnSave_Click(object sender, EventArgs e)
         {
 
-            int licenseClassID = 3; // = clsLisenceClass.findLicenseByName(cbLicenseClass.Text)._id;
+            int licenseClassID  = clsLisenceClass.findLicenseByName(cbLicenseClass.Text)._id;
 
             int activeApplicationID = clsApplication.getActiveApplicationIDForLisenceClass(selectedPersonID, (int)clsApplication.enApplicationType.newDrivingLisence, licenseClassID);
 
