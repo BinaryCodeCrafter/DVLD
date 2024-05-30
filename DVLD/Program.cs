@@ -27,7 +27,7 @@ namespace DVLD
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmLogIn());
+            Application.Run(new frmLocalDrivingLicenseApplicationInfo(49));
         }
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         private static extern bool SetProcessDPIAware();

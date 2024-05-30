@@ -122,9 +122,9 @@ namespace DVLD_DataAccess
 
                     className = (string)reader["ClassName"];
                     classDescription = (string)reader["ClassDescription"];
-                    minimalAllowedAge = (int)reader["MinimumAllowedAge"];
-                    DefaultValidityLength = (int)reader["DefaultValidityLength"];
-                    classFees = (int)reader["ClassFees"];
+                    minimalAllowedAge = (byte)reader["MinimumAllowedAge"];
+                    DefaultValidityLength = (byte)reader["DefaultValidityLength"];
+                    classFees = (int)Convert.ToSingle( reader["ClassFees"]);
 
                 }
             } catch (Exception e)
