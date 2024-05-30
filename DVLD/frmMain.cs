@@ -92,7 +92,7 @@ namespace DVLD
 
         private void localDrivingLicenseApplicationsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmAddUpdateLocalDrivingLicenseApplication form = new frmAddUpdateLocalDrivingLicenseApplication();
+            frmLocalDrivingLicenseList form = new frmLocalDrivingLicenseList();
             form.ShowDialog();
         }
     }

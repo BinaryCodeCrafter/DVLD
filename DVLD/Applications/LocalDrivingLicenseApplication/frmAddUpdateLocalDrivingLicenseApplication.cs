@@ -16,6 +16,11 @@ namespace DVLD.Applications.LocalDrivingLicenseApplication
     public partial class frmAddUpdateLocalDrivingLicenseApplication : Form
     {
 
+        public delegate void onClose();
+
+        public onClose onclose;
+
+
         public enum enMode { addNew = 0, update = 1 }
         private enMode mode;
 
@@ -184,6 +189,11 @@ namespace DVLD.Applications.LocalDrivingLicenseApplication
         private void btnSave_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void frmAddUpdateLocalDrivingLicenseApplication_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            onclose?.Invoke();
         }
     }
 }
