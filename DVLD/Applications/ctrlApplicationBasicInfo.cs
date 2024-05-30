@@ -43,6 +43,8 @@ namespace DVLD.Applications
                 return;
             }
 
+            fillApplicationInfo();
+
         }
 
 

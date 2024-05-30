@@ -80,12 +80,12 @@ namespace DVLD_DataAccess
                 {
                     isFound = true;
 
-                    applicationPersonID = (int)reader["ApplicationPersonID"];
-                    applicationStatus = (int)reader["ApplicationStatus"];
+                    applicationPersonID = (int)reader["ApplicantPersonID"];
+                    applicationStatus = (int)(byte)reader["ApplicationStatus"];
                     applicationDate = (DateTime)reader["ApplicationDate"];
                     applicationTypeID = (int)reader["ApplicationTypeID"];
                     lastStatusDate = (DateTime)reader["LastStatusDate"];
-                    paidFees = (int)reader["PaidFees"];
+                    paidFees = (int)(decimal)reader["PaidFees"];
                     createdByUserID = (int)reader["CreatedByUserID"];
                 }
                 reader.Close();
