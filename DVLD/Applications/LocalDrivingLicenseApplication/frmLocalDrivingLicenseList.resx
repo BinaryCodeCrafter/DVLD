@@ -121,7 +121,7 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="updateApplicationToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="toolStripMenuItem1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAUZJREFUWEft
         l1FugzAMhjnKjrKj7BBLtcfdBEEPwtt6BOCpDztIxxfszaUrdVKK1Kq/9AvbxPafKDRp8cTdINTdIYN7
@@ -130,6 +130,16 @@
         L6dh9DdVv8PXuNwReDd/2mqxHIS6L6E2tiD2J6QvJXyKawToZcYKCHX7dux3h5utALD5NMfniY+Qi/Wv
         EaAroDMcG47Ngb63sRMMA5rZATMIVfd1bg8ABDj2QFw2rtZxNyfyO2wHjnZzvBJMbBx3TuAioDjUz44Y
         T/0duGnzKYbGupLr/jnxoSh+AAlfwZxwlTZKAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="updateApplicationToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAP1JREFUWEft
+        l+0NgyAQhh2lo3QUh6hNf3YTUzuIY6C/HKXlxbuCpuBR1LYJT0IE7oPXg/hRZH6a010dq6Z7pDZKF48O
+        HiCChvtQNX19qdVh7I/qV6jEcL6pK3It4gagT3NJlcANIQcNw2BRDnD6on3Ufi18Za2vKWwKjLhiYaqC
+        EWKMC0j9gNd3brDVsGfDxyYCgFuN0GHaTABgAaHDuIkAuwVdS1NeVhfwtUPo3LVxkibmGG4LD7D3zwU2
+        cjDPGWMEnIeG8hza8bXXHCQOdnAXB5/kSBIwJwvIArKALOA/BTA6WH/rqZKG0dDLLUWAKnWCyZsusu3/
+        f5GRURRPr+YN6l5+8lgAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="pictureBox2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
