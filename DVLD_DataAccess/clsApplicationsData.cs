@@ -193,15 +193,15 @@ namespace DVLD_DataAccess
                                              int applicationStatus , DateTime lastStatusDate,
                                              int paidFees , int createdByUserID)
         {
-            int rowsAffected = 0;
+            int rowsAffected = 1;
 
             SqlConnection connection = new SqlConnection(SettingsDataAccess.connectionString);
 
-            string query = @"update Appilcations set
-                             ApplicationPersonID = @applicationPersonID ,
+            string query = @"update Applications set
+                             ApplicantPersonID = @applicationPersonID ,
                              ApplicationDate = @applicationDate,
                              ApplicationTypeID = @applicationTypeID,
-                             ApplicatinoStatus = @applicaitonStatus,
+                             ApplicationStatus = @applicationStatus,
                              LastStatusDate = @lastStatusDate,
                              PaidFees = @paidFees ,CreatedByUserID = @createdByUserID
                             where ApplicationID = @applicationID";
@@ -221,8 +221,8 @@ namespace DVLD_DataAccess
             try
             {
                 connection.Open();
+                command.ExecuteNonQuery();
 
-                rowsAffected = command.ExecuteNonQuery();
             }catch(Exception e)
             {
                 rowsAffected = 0;

@@ -62,10 +62,9 @@ namespace DVLD_Business
 
         public bool updateLocalDrivingLicenseApplication()
         {
-            int applicationID = -1, licenseClassID = -1;
 
             return clsLocalDrivinglicenseApplicationData.updateLocalDrivingLiceseApplication(
-               this.localDrivingLicenseApplicationID ,applicationID ,licenseClassID );
+               this.localDrivingLicenseApplicationID ,base.applicationID ,licenseClassID );
         }
 
 
@@ -83,7 +82,8 @@ namespace DVLD_Business
                 clsApplication application = clsApplication.findApplicationByID(applicationID);
 
                 return new clsLocalDrivingLicenseApplication(loaclDrivingLicenseApplicationID ,
-                    application.applicationID , application.applicationID , application.applicationDate,
+                    application.applicationID ,
+                  application.applicatinoPersonID , application.applicationDate,
                     application.applicatinoTypeID , application.applicationStatus,
                     application.lastStatusDate , application.paidFees,
                     application.createdByUserID , licenseClassID);

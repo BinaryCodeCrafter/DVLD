@@ -137,6 +137,7 @@ namespace DVLD_Business
 
         private bool updateApplication()
         {
+
             return clsApplicationsData.updateApplication(applicationID, applicatinoPersonID,
                 applicationDate, applicatinoTypeID, (int)applicationStatus, lastStatusDate,
                 paidFees, createdByUserID);

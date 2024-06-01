@@ -171,10 +171,10 @@ namespace DVLD_DataAccess
 
             SqlConnection connection = new SqlConnection(SettingsDataAccess.connectionString);
 
-            string query = @"update LocalDrivingLiceseApplications set
+            string query = @"update LocalDrivingLicenseApplications set
                             ApplicationID = @applicationID ,
                             LicenseClassID = @licenseClassID 
-                            where LocalDrivingLicnseApplicationID = @id";
+                            where LocalDrivingLicenseApplicationID = @id";
 
             SqlCommand command = new SqlCommand(query , connection);
 

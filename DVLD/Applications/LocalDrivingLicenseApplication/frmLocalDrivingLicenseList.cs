@@ -62,5 +62,13 @@ namespace DVLD.Applications.LocalDrivingLicenseApplication
             form.onclose += refreshData;
             form.ShowDialog();
         }
+
+        private void updateApplicationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int id = (int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value;
+            frmAddUpdateLocalDrivingLicenseApplication form = new frmAddUpdateLocalDrivingLicenseApplication(id);
+            form.onclose += refreshData;
+            form.ShowDialog();
+        }
     }
 }

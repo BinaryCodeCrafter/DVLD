@@ -80,7 +80,7 @@ namespace DVLD.Applications.LocalDrivingLicenseApplication
         private void LoadData()
         {
             localDrivingLicenseApplication = clsLocalDrivingLicenseApplication
-                .findLocalDrivingLicenseApplicationByApplicationID(
+                .findLocalDrivingLicneseApplicationByID(
                 localDrivingLicenseApplicationID);
 
             if (localDrivingLicenseApplication == null)
