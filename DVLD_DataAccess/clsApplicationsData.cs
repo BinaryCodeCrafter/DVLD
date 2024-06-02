@@ -242,7 +242,7 @@ namespace DVLD_DataAccess
 
             SqlConnection connection = new SqlConnection(SettingsDataAccess.connectionString);
 
-            string query = @"delete Application where ApplicationID = @id";
+            string query = @"delete Applications where ApplicationID = @id";
 
             SqlCommand command = new SqlCommand(query, connection);
 

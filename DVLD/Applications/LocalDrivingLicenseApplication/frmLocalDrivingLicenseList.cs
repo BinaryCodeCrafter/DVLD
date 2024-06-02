@@ -58,7 +58,7 @@ namespace DVLD.Applications.LocalDrivingLicenseApplication
 
         private void button1_Click(object sender, EventArgs e)
         {
-         frmAddUpdateLocalDrivingLicenseApplication form = new frmAddUpdateLocalDrivingLicenseApplication();
+            frmAddUpdateLocalDrivingLicenseApplication form = new frmAddUpdateLocalDrivingLicenseApplication();
             form.onclose += refreshData;
             form.ShowDialog();
         }
@@ -66,8 +66,18 @@ namespace DVLD.Applications.LocalDrivingLicenseApplication
         private void updateApplicationToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int id = (int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value;
-            frmLocalDrivingLicenseApplicationInfo form = new frmLocalDrivingLicenseApplicationInfo(id);
-            form.ShowDialog();
+            clsLocalDrivingLicenseApplication localApp =
+                clsLocalDrivingLicenseApplication.findLocalDrivingLicneseApplicationByID(id);
+            if (localApp.delete())
+            {
+                MessageBox.Show("application deleted!");
+                refreshData();
+            }
+            else
+            {
+                MessageBox.Show("something went wrong!");
+            }
+
         }
     }
 }

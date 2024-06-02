@@ -172,7 +172,8 @@ namespace DVLD_Business
                 return false;
             }
 
-            isBaseDeleted = clsApplication.dalete(base.applicationID);
+
+            isBaseDeleted = clsApplication.dalete(ApplicationID);
 
             return isBaseDeleted;   
             

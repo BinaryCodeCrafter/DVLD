@@ -209,7 +209,7 @@ namespace DVLD_DataAccess
             SqlConnection connection = new SqlConnection(SettingsDataAccess.connectionString);
 
             string query = @"delete LocalDrivingLicenseApplications where
-                             LocalDrivingLicnseApplicationID = @id";
+                             LocalDrivingLicenseApplicationID = @id";
 
             SqlCommand commmand = new SqlCommand(query , connection);
 
