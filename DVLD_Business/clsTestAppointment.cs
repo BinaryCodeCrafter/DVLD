@@ -22,6 +22,15 @@ namespace DVLD_Business
         public bool isLocked {  get; set; }
         public int retakeTestApplicationID { get; set; }
 
+        public clsApplication retakeTestApplicationInfo;
+
+        public int testID
+        {
+            get { return getTestID(); }
+        }
+
+
+
         public enum enMode { addNew = 0 , update= 1}
 
         public enMode mode = enMode.addNew;
@@ -51,6 +60,7 @@ namespace DVLD_Business
             this.isLocked = isLocked;
             this.retakeTestApplicationID = retakeTestApplicationID;
             this.mode = enMode.update;
+            this.retakeTestApplicationInfo = clsApplication.findApplicationByID(retakeTestApplicationID);
         }
 
 
@@ -151,7 +161,7 @@ namespace DVLD_Business
             }
         }
 
-        public static int getTestID(int testAppointmentID)
+        public int getTestID()
         {
             return clsTestAppointmentData.GetTestID(testAppointmentID);
         }
