@@ -17,6 +17,9 @@ namespace DVLD_Business
         public string description { get; set; }
         public int fees { get; set; }
 
+        public enum enTestType { VisionTest = 1, WrittenTest = 2, StreetTest = 3 };
+
+
         private clsTestType(int id, string title, string description, int fees)
         {
             this.id = id;
