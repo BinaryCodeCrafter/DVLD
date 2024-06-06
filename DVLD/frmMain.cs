@@ -95,5 +95,11 @@ namespace DVLD
             frmLocalDrivingLicenseList form = new frmLocalDrivingLicenseList();
             form.ShowDialog();
         }
+
+        private void localLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAddUpdateLocalDrivingLicenseApplication form = new frmAddUpdateLocalDrivingLicenseApplication();
+            form.ShowDialog();
+        }
     }
 }

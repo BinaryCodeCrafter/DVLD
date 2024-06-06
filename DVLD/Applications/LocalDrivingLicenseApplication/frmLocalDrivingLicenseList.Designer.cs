@@ -34,13 +34,18 @@
             this.dgvLocalDrivingLicenseApplications = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.updateApplicationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.lblRecords = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.visionTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.wriiterTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.practicalTestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLocalDrivingLicenseApplications)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -76,9 +81,11 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
             this.toolStripMenuItem2,
-            this.updateApplicationToolStripMenuItem});
+            this.toolStripMenuItem4,
+            this.updateApplicationToolStripMenuItem,
+            this.toolStripMenuItem3});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(227, 146);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(227, 222);
             // 
             // toolStripMenuItem1
             // 
@@ -87,14 +94,37 @@
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(226, 38);
             this.toolStripMenuItem1.Text = "update application";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem2.Image")));
+            this.toolStripMenuItem2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(220, 38);
+            this.toolStripMenuItem2.Text = "details";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem4.Image")));
+            this.toolStripMenuItem4.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(220, 38);
+            this.toolStripMenuItem4.Text = "cancel";
+            this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
             // 
             // updateApplicationToolStripMenuItem
             // 
+            this.updateApplicationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.visionTestToolStripMenuItem,
+            this.wriiterTestToolStripMenuItem,
+            this.practicalTestToolStripMenuItem});
             this.updateApplicationToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("updateApplicationToolStripMenuItem.Image")));
             this.updateApplicationToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.updateApplicationToolStripMenuItem.Name = "updateApplicationToolStripMenuItem";
             this.updateApplicationToolStripMenuItem.Size = new System.Drawing.Size(226, 38);
-            this.updateApplicationToolStripMenuItem.Text = "delete";
+            this.updateApplicationToolStripMenuItem.Text = "sechdul test";
             this.updateApplicationToolStripMenuItem.Click += new System.EventHandler(this.updateApplicationToolStripMenuItem_Click);
             // 
             // label1
@@ -150,13 +180,38 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // toolStripMenuItem2
+            // toolStripMenuItem3
             // 
-            this.toolStripMenuItem2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem2.Image")));
-            this.toolStripMenuItem2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(226, 38);
-            this.toolStripMenuItem2.Text = "details";
+            this.toolStripMenuItem3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem3.Image")));
+            this.toolStripMenuItem3.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(226, 38);
+            this.toolStripMenuItem3.Text = "delete";
+            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click_1);
+            // 
+            // visionTestToolStripMenuItem
+            // 
+            this.visionTestToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("visionTestToolStripMenuItem.Image")));
+            this.visionTestToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.visionTestToolStripMenuItem.Name = "visionTestToolStripMenuItem";
+            this.visionTestToolStripMenuItem.Size = new System.Drawing.Size(236, 38);
+            this.visionTestToolStripMenuItem.Text = "vision test";
+            // 
+            // wriiterTestToolStripMenuItem
+            // 
+            this.wriiterTestToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("wriiterTestToolStripMenuItem.Image")));
+            this.wriiterTestToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.wriiterTestToolStripMenuItem.Name = "wriiterTestToolStripMenuItem";
+            this.wriiterTestToolStripMenuItem.Size = new System.Drawing.Size(236, 38);
+            this.wriiterTestToolStripMenuItem.Text = "wriiter test";
+            // 
+            // practicalTestToolStripMenuItem
+            // 
+            this.practicalTestToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("practicalTestToolStripMenuItem.Image")));
+            this.practicalTestToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.practicalTestToolStripMenuItem.Name = "practicalTestToolStripMenuItem";
+            this.practicalTestToolStripMenuItem.Size = new System.Drawing.Size(236, 38);
+            this.practicalTestToolStripMenuItem.Text = "practical test";
             // 
             // frmLocalDrivingLicenseList
             // 
@@ -195,5 +250,10 @@
         private System.Windows.Forms.ToolStripMenuItem updateApplicationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem visionTestToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem wriiterTestToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem practicalTestToolStripMenuItem;
     }
 }

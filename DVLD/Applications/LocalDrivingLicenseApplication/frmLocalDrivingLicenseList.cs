@@ -65,19 +65,45 @@ namespace DVLD.Applications.LocalDrivingLicenseApplication
 
         private void updateApplicationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int id = (int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value;
-            clsLocalDrivingLicenseApplication localApp =
-                clsLocalDrivingLicenseApplication.findLocalDrivingLicneseApplicationByID(id);
-            if (localApp.delete())
-            {
-                MessageBox.Show("application deleted!");
-                refreshData();
-            }
-            else
-            {
-                MessageBox.Show("something went wrong!");
-            }
+          
+        }
 
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            int id = (int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value;
+            frmAddUpdateLocalDrivingLicenseApplication form = new frmAddUpdateLocalDrivingLicenseApplication(id);
+            form.ShowDialog();
+
+            refreshData();
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            int id = (int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value;
+            frmLocalDrivingLicenseApplicationInfo from = new frmLocalDrivingLicenseApplicationInfo(id);
+            from.ShowDialog();
+            refreshData();
+        }
+
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+                   
+        }
+
+        private void toolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            int id = (int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value;
+            clsLocalDrivingLicenseApplication app = clsLocalDrivingLicenseApplication.findLocalDrivingLicneseApplicationByID(id);
+            app.cancel();
+            refreshData();
+        }
+
+        private void toolStripMenuItem3_Click_1(object sender, EventArgs e)
+        {
+            int id = (int)dgvLocalDrivingLicenseApplications.CurrentRow.Cells[0].Value;
+            clsLocalDrivingLicenseApplication app = clsLocalDrivingLicenseApplication.findLocalDrivingLicneseApplicationByID(id);
+            app.delete();
+            refreshData();
         }
     }
 }
