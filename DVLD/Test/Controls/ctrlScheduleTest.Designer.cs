@@ -1,4 +1,4 @@
-﻿namespace DVLD.Test.Controls
+﻿namespace DVLD.Tests
 {
     partial class ctrlScheduleTest
     {

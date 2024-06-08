@@ -179,10 +179,17 @@ namespace DVLD_Business
             
         }
 
+        public bool DoesAttendTestType(clsTestType.enTestType testTypeID)
+        {
+            // update this later
+            return false;
+        }
 
-
-
-
+        public static bool IsThereAnActiveScheduledTest(int localDrivingLicenseApplicationID, clsTestType.enTestType testTypeID)
+        {
+            // update this
+            return false;
+        }
     }
 
 }
